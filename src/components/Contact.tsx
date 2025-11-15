@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Mail, User, MessageSquare, Send } from "lucide-react";
+import emailjs from "emailjs-com";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -12,15 +13,31 @@ export default function Contact() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert("Message envoyé ! (À connecter à EmailJS)");
+
+    emailjs
+      .sendForm(
+        "service_mu9ozq5",   // ton Service ID
+        "template_v8szh2k",  // ton Template ID
+        e.currentTarget,     // le formulaire
+        "LbbIRCJY3KXuxCAuO" // ton User ID / Public Key
+      )
+      .then(
+        () => {
+          alert("Message envoyé avec succès !");
+          setFormData({ name: "", email: "", message: "" });
+        },
+        (error) => {
+          console.error(error);
+          alert("Erreur lors de l'envoi. Réessaye plus tard.");
+        }
+      );
   };
 
   return (
     <section id="contact" className="contact-section">
       <h2>Contactez-moi</h2>
-
       <form onSubmit={handleSubmit} className="contact-form">
         <div className="input-group">
           <User size={20} />
