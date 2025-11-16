@@ -21,7 +21,7 @@ const projects: Project[] = [
       "Jeu de billes classique où l’objectif est de sauter les billes pour n’en laisser qu’une sur le plateau. Développé en Python avec logique automatique pour résoudre le puzzle.",
     image: pegsolitaireImg,
     tags: ["Python", "Jeu", "Algorithme"],
-    link: "https://iut-info.univ-reims.fr/gitlab/mehe0005/sae1_pegsolitaire",
+    link: "https://github.com/MehenniIslam/Pegsolitaire",
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ const projects: Project[] = [
       "Machine virtuelle Linux configurée de A à Z : installation du système, gestion des utilisateurs, réseaux, packages et environnement de développement complet.",
     image: vmLinuxImg,
     tags: ["Linux", "VM", "Virtualisation"],
-    link: "https://iut-info.univ-reims.fr/gitlab/mehe0005/ms103",
+    link: "https://github.com/MehenniIslam/VM",
   },
   {
     id: 3,
@@ -39,7 +39,7 @@ const projects: Project[] = [
       "Base de données créée en SQL : tables, relations, requêtes complexes et gestion de données. Projet démontrant la conception et manipulation d’une base structurée pour des applications réelles.",
     image: sqlDbImg,
     tags: ["SQL", "Base de données", "Gestion de données"],
-    link: "https://iut-info.univ-reims.fr/gitlab/mehe0005/sae_sql_mehenni_islam_djo-djolo_ayessa",
+    link: "https://github.com/MehenniIslam/SQL_BaseDonne",
   },
 ];
 
