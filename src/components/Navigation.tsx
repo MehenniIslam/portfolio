@@ -43,12 +43,13 @@ export const Navigation = ({ darkMode, toggleDarkMode }: NavigationProps) => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo uniquement */}
+          {/* Logo agrandi */}
           <a href="#home">
             <img
               src={logo}
               alt="Logo"
-              className="w-12 h-12 object-contain"
+              className="w-16 h-16 object-contain" // agrandi (16 → 64px)
+              style={{ maxWidth: "80px", maxHeight: "80px" }} // peut ajuster selon ton goût
             />
           </a>
 
