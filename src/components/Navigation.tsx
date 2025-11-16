@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.png";
 
 interface NavigationProps {
   darkMode: boolean;
@@ -12,10 +13,7 @@ export const Navigation = ({ darkMode, toggleDarkMode }: NavigationProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -45,12 +43,18 @@ export const Navigation = ({ darkMode, toggleDarkMode }: NavigationProps) => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          <button
-            onClick={() => scrollToSection("home")}
-            className="text-xl font-bold text-primary hover:text-primary/80 transition-colors"
+          {/* Logo + Nom */}
+          <a
+            href="#home"
+            className="flex items-center gap-2"
           >
-            Portfolio
-          </button>
+            <img
+              src={logo}
+              alt="Logo Islam Mehenni"
+              className="w-12 h-12 object-contain"
+            />
+            <span className="text-xl font-bold text-foreground">Islam Mehenni</span>
+          </a>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
