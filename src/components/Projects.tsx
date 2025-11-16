@@ -52,31 +52,29 @@ export const Projects = () => {
       const section = document.getElementById("projects");
       if (section) {
         const rect = section.getBoundingClientRect();
-        // si le haut de la section est visible
         setIsScrolled(rect.top <= window.innerHeight * 0.8);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // initial check
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-        <section
-          id="skills"
-          className="py-20 transition-all duration-700"
-          style={{
-            background: "linear-gradient(to right, #4f46e5, #9333ea)", 
-          }}
-        >
-
+    <section
+      id="projects"
+      className="py-20 transition-all duration-700"
+      style={{
+        backgroundColor: "#0D47A1", // même couleur que ton footer
+      }}
+    >
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Mes Projets
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-lg text-white/80 max-w-2xl mx-auto">
             Découvrez mes réalisations académiques et personnelles
           </p>
         </div>
@@ -85,7 +83,7 @@ export const Projects = () => {
           {projects.map((project, index) => (
             <div
               key={project.id}
-              className="group bg-card rounded-xl overflow-hidden shadow-lg border border-border hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 animate-fade-in"
+              className="group bg-white/10 rounded-xl overflow-hidden shadow-lg border border-white/20 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative overflow-hidden h-64">
@@ -98,10 +96,10 @@ export const Projects = () => {
               </div>
 
               <div className="p-6">
-                <h3 className="text-2xl font-bold text-foreground mb-3 group-hover:text-primary transition-colors">
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
                   {project.title}
                 </h3>
-                <p className="text-muted-foreground mb-4 line-clamp-3">
+                <p className="text-white/80 mb-4 line-clamp-3">
                   {project.description}
                 </p>
 
@@ -109,17 +107,17 @@ export const Projects = () => {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="px-3 py-1 bg-primary/10 text-primary text-sm rounded-full font-medium"
+                      className="px-3 py-1 bg-primary/10 text-white text-sm rounded-full font-medium"
                     >
                       {tag}
                     </span>
                   ))}
                 </div>
 
-                <Button asChild className="w-full">
-                <a href={project.link} target="_blank" rel="noopener noreferrer">
-                  Voir plus <ExternalLink className="ml-2 h-4 w-4" />
-                </a>
+                <Button asChild className="w-full bg-white text-black hover:bg-white/90">
+                  <a href={project.link} target="_blank" rel="noopener noreferrer">
+                    Voir plus <ExternalLink className="ml-2 h-4 w-4" />
+                  </a>
                 </Button>
               </div>
             </div>

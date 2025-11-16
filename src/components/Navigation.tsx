@@ -40,18 +40,19 @@ export const Navigation = ({ darkMode, toggleDarkMode }: NavigationProps) => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-gradient-to-r from-blue-600 to-purple-600/80 backdrop-blur-lg shadow-lg border-b border-border"
+          ? "bg-gradient-to-r from-primary to-hero-to backdrop-blur-lg shadow-lg border-b border-border"
           : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
+
           {/* Logo */}
           <button
             onClick={() => scrollToSection("home")}
             className="flex items-center"
           >
-            <img src={logo} alt="Logo" className="h-12 w-auto" />
+            <img src={logo} alt="Logo" className="h-14 w-auto" />
           </button>
 
           {/* Desktop Navigation */}
@@ -88,12 +89,12 @@ export const Navigation = ({ darkMode, toggleDarkMode }: NavigationProps) => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden py-4 border-t border-border bg-gradient-to-r from-blue-600 to-purple-600/95 backdrop-blur-lg">
+          <div className="md:hidden py-4 border-t border-border bg-gradient-to-r from-primary to-hero-to backdrop-blur-lg">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-accent transition-colors"
+                className="block w-full text-left px-4 py-3 text-white hover:text-primary hover:bg-accent transition-colors"
               >
                 {link.label}
               </button>
