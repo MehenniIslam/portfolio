@@ -39,12 +39,12 @@ const SkillBar = ({ skill }: { skill: Skill }) => {
   return (
     <div ref={barRef} className="mb-6">
       <div className="flex justify-between mb-2">
-        <span className="text-white font-medium">{skill.label}</span>
-        <span className="text-white/70">{skill.percent}%</span>
+        <span className="text-foreground dark:text-white font-medium">{skill.label}</span>
+        <span className="text-foreground/70 dark:text-white/70">{skill.percent}%</span>
       </div>
-      <div className="h-3 bg-white/20 rounded-full overflow-hidden">
+      <div className="h-3 bg-skill-bar-bg dark:bg-skill-bar-bg rounded-full overflow-hidden">
         <div
-          className="h-full bg-primary rounded-full transition-all duration-1500 ease-out"
+          className="h-full bg-skill-bar-fill dark:bg-skill-bar-fill rounded-full transition-all duration-1500 ease-out"
           style={{ width: isVisible ? `${skill.percent}%` : "0%" }}
         />
       </div>
@@ -57,20 +57,20 @@ export const Skills = () => {
   const programming = skills.filter((s) => s.category === "programming");
 
   return (
-    <section id="skills" className="py-20 bg-card">
+    <section id="skills" className="py-20 bg-background dark:bg-background">
       <div className="container mx-auto px-4 max-w-6xl">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground dark:text-white mb-4">
             Compétences
           </h2>
-          <p className="text-white/80 text-lg max-w-2xl mx-auto">
+          <p className="text-foreground/80 dark:text-white/80 text-lg max-w-2xl mx-auto">
             Mes compétences linguistiques et techniques
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-12">
-          <div className="bg-white/10 p-8 rounded-lg shadow-lg border border-white/20">
-            <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+          <div className="bg-white/10 dark:bg-white/10 p-8 rounded-lg shadow-lg border border-white/20">
+            <h3 className="text-2xl font-bold text-foreground dark:text-white mb-6 flex items-center gap-2">
               Langues
             </h3>
             {languages.map((skill) => (
@@ -78,8 +78,8 @@ export const Skills = () => {
             ))}
           </div>
 
-          <div className="bg-white/10 p-8 rounded-lg shadow-lg border border-white/20">
-            <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
+          <div className="bg-white/10 dark:bg-white/10 p-8 rounded-lg shadow-lg border border-white/20">
+            <h3 className="text-2xl font-bold text-foreground dark:text-white mb-6 flex items-center gap-2">
               Programmation
             </h3>
             {programming.map((skill) => (

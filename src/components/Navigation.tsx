@@ -13,17 +13,15 @@ export const Navigation = ({ darkMode, toggleDarkMode }: NavigationProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
       setIsOpen(false);
     }
   };
@@ -54,7 +52,7 @@ export const Navigation = ({ darkMode, toggleDarkMode }: NavigationProps) => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="text-foreground hover:text-primary transition-colors font-medium"
+                className="text-foreground dark:text-white hover:text-primary transition-colors font-medium"
               >
                 {link.label}
               </button>
@@ -80,7 +78,7 @@ export const Navigation = ({ darkMode, toggleDarkMode }: NavigationProps) => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="block w-full text-left px-4 py-3 text-foreground hover:text-primary hover:bg-accent transition-colors"
+                className="block w-full text-left px-4 py-3 text-foreground dark:text-white hover:text-primary hover:bg-accent transition-colors"
               >
                 {link.label}
               </button>

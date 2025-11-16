@@ -3,9 +3,8 @@ import { useState } from "react";
 export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -14,9 +13,9 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 bg-card">
+    <section id="contact" className="py-20 bg-background dark:bg-background">
       <div className="container mx-auto px-4 max-w-xl">
-        <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center">
+        <h2 className="text-4xl md:text-5xl font-bold text-foreground dark:text-white mb-8 text-center">
           Contact
         </h2>
 
@@ -27,7 +26,7 @@ export default function Contact() {
             placeholder="Nom"
             value={formData.name}
             onChange={handleChange}
-            className="p-3 rounded bg-white/10 border border-white/20 text-white"
+            className="p-3 rounded border border-skill-bar-bg dark:border-skill-bar-bg bg-background dark:bg-background text-foreground dark:text-white"
             required
           />
           <input
@@ -36,7 +35,7 @@ export default function Contact() {
             placeholder="Email"
             value={formData.email}
             onChange={handleChange}
-            className="p-3 rounded bg-white/10 border border-white/20 text-white"
+            className="p-3 rounded border border-skill-bar-bg dark:border-skill-bar-bg bg-background dark:bg-background text-foreground dark:text-white"
             required
           />
           <textarea
@@ -45,12 +44,12 @@ export default function Contact() {
             rows={5}
             value={formData.message}
             onChange={handleChange}
-            className="p-3 rounded bg-white/10 border border-white/20 text-white"
+            className="p-3 rounded border border-skill-bar-bg dark:border-skill-bar-bg bg-background dark:bg-background text-foreground dark:text-white"
             required
           />
           <button
             type="submit"
-            className="bg-primary text-primary-foreground p-3 rounded font-bold hover:bg-blue-700 transition-colors"
+            className="bg-primary text-primary-foreground p-3 rounded font-bold hover:bg-primary/80 transition-colors"
           >
             Envoyer
           </button>
