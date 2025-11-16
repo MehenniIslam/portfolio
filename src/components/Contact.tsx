@@ -8,7 +8,8 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert("Formulaire envoyé !");
+    // ouverture du client mail
+    window.location.href = `mailto:tonemail@example.com?subject=Contact de ${formData.name}&body=${formData.message} (${formData.email})`;
     setFormData({ name: "", email: "", message: "" });
   };
 
@@ -26,7 +27,7 @@ export default function Contact() {
             placeholder="Nom"
             value={formData.name}
             onChange={handleChange}
-            className="p-3 rounded border border-skill-bar-bg dark:border-skill-bar-bg bg-background dark:bg-background text-foreground dark:text-white"
+            className="p-3 rounded border border-skill-bar-bg dark:border-skill-bar-bg bg-gray-100 dark:bg-gray-800 text-foreground dark:text-white"
             required
           />
           <input
@@ -35,7 +36,7 @@ export default function Contact() {
             placeholder="Email"
             value={formData.email}
             onChange={handleChange}
-            className="p-3 rounded border border-skill-bar-bg dark:border-skill-bar-bg bg-background dark:bg-background text-foreground dark:text-white"
+            className="p-3 rounded border border-skill-bar-bg dark:border-skill-bar-bg bg-gray-100 dark:bg-gray-800 text-foreground dark:text-white"
             required
           />
           <textarea
@@ -44,7 +45,7 @@ export default function Contact() {
             rows={5}
             value={formData.message}
             onChange={handleChange}
-            className="p-3 rounded border border-skill-bar-bg dark:border-skill-bar-bg bg-background dark:bg-background text-foreground dark:text-white"
+            className="p-3 rounded border border-skill-bar-bg dark:border-skill-bar-bg bg-gray-100 dark:bg-gray-800 text-foreground dark:text-white"
             required
           />
           <button
