@@ -10,7 +10,7 @@ interface Project {
   description: string;
   image: string;
   tags: string[];
-  link: string; // lien vers le projet ou GitHub
+  link: string;
 }
 
 const projects: Project[] = [
@@ -21,7 +21,7 @@ const projects: Project[] = [
       "Jeu de billes classique où l’objectif est de sauter les billes pour n’en laisser qu’une sur le plateau. Développé en Python avec logique automatique pour résoudre le puzzle.",
     image: pegsolitaireImg,
     tags: ["Python", "Jeu", "Algorithme"],
-    link: "https://iut-info.univ-reims.fr/gitlab/mehe0005/sae1_pegsolitaire", 
+    link: "https://iut-info.univ-reims.fr/gitlab/mehe0005/sae1_pegsolitaire",
   },
   {
     id: 2,
@@ -30,7 +30,7 @@ const projects: Project[] = [
       "Machine virtuelle Linux configurée de A à Z : installation du système, gestion des utilisateurs, réseaux, packages et environnement de développement complet.",
     image: vmLinuxImg,
     tags: ["Linux", "VM", "Virtualisation"],
-    link: "https://iut-info.univ-reims.fr/gitlab/mehe0005/ms103", 
+    link: "https://iut-info.univ-reims.fr/gitlab/mehe0005/ms103",
   },
   {
     id: 3,
@@ -91,16 +91,15 @@ export const Projects = () => {
                   ))}
                 </div>
 
-                <Button
-                  as="a"
+                <a
                   href={project.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full group/btn"
+                  className="w-full inline-flex items-center justify-center px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors"
                 >
                   Voir plus
-                  <ExternalLink className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
-                </Button>
+                  <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </a>
               </div>
             </div>
           ))}
