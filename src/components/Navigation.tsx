@@ -13,7 +13,10 @@ export const Navigation = ({ darkMode, toggleDarkMode }: NavigationProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -37,21 +40,19 @@ export const Navigation = ({ darkMode, toggleDarkMode }: NavigationProps) => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/80 backdrop-blur-lg shadow-lg border-b border-border"
+          ? "bg-gradient-to-r from-blue-600 to-purple-600/80 backdrop-blur-lg shadow-lg border-b border-border"
           : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo agrandi */}
-          <a href="#home">
-            <img
-              src={logo}
-              alt="Logo"
-              className="w-24 h-24 object-contain" 
-              style={{ maxWidth: "80px", maxHeight: "80px" }}
-            />
-          </a>
+          {/* Logo */}
+          <button
+            onClick={() => scrollToSection("home")}
+            className="flex items-center"
+          >
+            <img src={logo} alt="Logo" className="h-12 w-auto" />
+          </button>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
@@ -87,7 +88,7 @@ export const Navigation = ({ darkMode, toggleDarkMode }: NavigationProps) => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden py-4 border-t border-border bg-background/95 backdrop-blur-lg">
+          <div className="md:hidden py-4 border-t border-border bg-gradient-to-r from-blue-600 to-purple-600/95 backdrop-blur-lg">
             {navLinks.map((link) => (
               <button
                 key={link.id}
