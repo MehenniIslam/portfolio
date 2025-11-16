@@ -36,13 +36,14 @@ export default function Contact() {
   };
 
   return (
-    <section
-      id="contact"
-      className="py-20"
-      style={{
-        backgroundImage: `linear-gradient(to bottom right, hsl(var(--hero-gradient-from)), hsl(var(--hero-gradient-to)))`,
-      }}
-    >
+          <section
+            id="contact"
+            className="py-20 transition-all duration-700"
+            style={{
+              background: "linear-gradient(to right, #4f46e5, #9333ea)",
+            }}
+          >
+
       <div className="container mx-auto px-4 max-w-2xl">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">

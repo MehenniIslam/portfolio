@@ -63,14 +63,14 @@ export const Projects = () => {
   }, []);
 
   return (
-    <section
-      id="projects"
-      className={`py-20 transition-all duration-700 ${
-        isScrolled
-          ? "bg-gradient-to-r from-blue-600 to-purple-600/30"
-          : "bg-background"
-      }`}
-    >
+        <section
+          id="skills"
+          className="py-20 transition-all duration-700"
+          style={{
+            background: "linear-gradient(to right, #4f46e5, #9333ea)", 
+          }}
+        >
+
       <div className="container mx-auto px-4">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
@@ -116,15 +116,10 @@ export const Projects = () => {
                   ))}
                 </div>
 
-                <Button
-                  as="a"
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-full group/btn"
-                >
-                  Voir plus
-                  <ExternalLink className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
+                <Button asChild className="w-full">
+                <a href={project.link} target="_blank" rel="noopener noreferrer">
+                  Voir plus <ExternalLink className="ml-2 h-4 w-4" />
+                </a>
                 </Button>
               </div>
             </div>
