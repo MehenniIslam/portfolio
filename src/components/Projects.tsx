@@ -1,9 +1,8 @@
 import { ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
-import project4 from "@/assets/project-4.jpg";
+import pegsolitaireImg from "@/assets/pegsolitaire.png";
+import vmLinuxImg from "@/assets/vm-linux.png";
+import sqlDbImg from "@/assets/sql-db.png";
 
 interface Project {
   id: number;
@@ -11,40 +10,36 @@ interface Project {
   description: string;
   image: string;
   tags: string[];
+  link: string; // lien vers le projet ou GitHub
 }
 
 const projects: Project[] = [
   {
     id: 1,
-    title: "Site web responsive",
+    title: "PegSolitaire (Python)",
     description:
-      "Développement d'un site web moderne et entièrement responsive avec une interface utilisateur intuitive et des animations fluides.",
-    image: project1,
-    tags: ["HTML", "CSS", "JavaScript"],
+      "Jeu de billes classique où l’objectif est de sauter les billes pour n’en laisser qu’une sur le plateau. Développé en Python avec logique automatique pour résoudre le puzzle.",
+    image: pegsolitaireImg,
+    tags: ["Python", "Jeu", "Algorithme"],
+    link: "https://iut-info.univ-reims.fr/gitlab/mehe0005/sae1_pegsolitaire", 
   },
   {
     id: 2,
-    title: "Application Python",
+    title: "Machine Virtuelle Linux",
     description:
-      "Application de traitement de données avec interface graphique, développée en Python avec analyse et visualisation de données.",
-    image: project2,
-    tags: ["Python", "Data Analysis"],
+      "Machine virtuelle Linux configurée de A à Z : installation du système, gestion des utilisateurs, réseaux, packages et environnement de développement complet.",
+    image: vmLinuxImg,
+    tags: ["Linux", "VM", "Virtualisation"],
+    link: "https://iut-info.univ-reims.fr/gitlab/mehe0005/ms103", 
   },
   {
     id: 3,
-    title: "Projet IUT",
+    title: "Base de données SQL",
     description:
-      "Projet académique complet réalisé à l'IUT, intégrant base de données, backend et interface utilisateur moderne.",
-    image: project3,
-    tags: ["PHP", "SQL", "Web"],
-  },
-  {
-    id: 4,
-    title: "Projet personnel",
-    description:
-      "Application web personnelle avec dashboard interactif, gestion d'utilisateurs et système de notifications en temps réel.",
-    image: project4,
-    tags: ["Full Stack", "C++"],
+      "Base de données créée en SQL : tables, relations, requêtes complexes et gestion de données. Projet démontrant la conception et manipulation d’une base structurée pour des applications réelles.",
+    image: sqlDbImg,
+    tags: ["SQL", "Base de données", "Gestion de données"],
+    link: "https://iut-info.univ-reims.fr/gitlab/mehe0005/sae_sql_mehenni_islam_djo-djolo_ayessa",
   },
 ];
 
@@ -61,7 +56,7 @@ export const Projects = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {projects.map((project, index) => (
             <div
               key={project.id}
@@ -96,7 +91,13 @@ export const Projects = () => {
                   ))}
                 </div>
 
-                <Button className="w-full group/btn">
+                <Button
+                  as="a"
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full group/btn"
+                >
                   Voir plus
                   <ExternalLink className="ml-2 h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
                 </Button>
