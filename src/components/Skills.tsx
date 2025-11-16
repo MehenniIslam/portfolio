@@ -25,16 +25,11 @@ const SkillBar = ({ skill }: { skill: Skill }) => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true);
-      },
+      ([entry]) => entry.isIntersecting && setIsVisible(true),
       { threshold: 0.1 }
     );
-
     if (barRef.current) observer.observe(barRef.current);
-    return () => {
-      if (barRef.current) observer.unobserve(barRef.current);
-    };
+    return () => barRef.current && observer.unobserve(barRef.current);
   }, []);
 
   return (
@@ -45,11 +40,8 @@ const SkillBar = ({ skill }: { skill: Skill }) => {
       </div>
       <div className="h-3 bg-white/20 rounded-full overflow-hidden">
         <div
-          className="h-full bg-gradient-to-r from-primary to-hero-to rounded-full transition-all duration-1500 ease-out"
-          style={{
-            width: isVisible ? `${skill.percent}%` : "0%",
-            transitionDuration: "1.5s",
-          }}
+          className="h-full bg-gradient-to-r from-blue-400 to-purple-500 rounded-full transition-all duration-1500 ease-out"
+          style={{ width: isVisible ? `${skill.percent}%` : "0%" }}
         />
       </div>
     </div>
@@ -62,10 +54,10 @@ export const Skills = () => {
 
   return (
     <section
-      id="contact"
-      className="py-20 transition-all duration-700"
+      id="skills"
+      className="py-20"
       style={{
-        backgroundColor: "#0D47A1",
+        background: "linear-gradient(to right, #2563eb, #9333ea)",
       }}
     >
       <div className="container mx-auto px-4 max-w-6xl">
@@ -81,26 +73,22 @@ export const Skills = () => {
         <div className="grid md:grid-cols-2 gap-12">
           <div className="bg-white/10 p-8 rounded-lg shadow-lg border border-white/20">
             <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-              <span className="w-2 h-8 bg-primary rounded-full"></span>
+              <span className="w-2 h-8 bg-white rounded-full"></span>
               Langues
             </h3>
-            <div>
-              {languages.map((skill) => (
-                <SkillBar key={skill.label} skill={skill} />
-              ))}
-            </div>
+            {languages.map((skill) => (
+              <SkillBar key={skill.label} skill={skill} />
+            ))}
           </div>
 
           <div className="bg-white/10 p-8 rounded-lg shadow-lg border border-white/20">
             <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-              <span className="w-2 h-8 bg-primary rounded-full"></span>
+              <span className="w-2 h-8 bg-white rounded-full"></span>
               Programmation
             </h3>
-            <div>
-              {programming.map((skill) => (
-                <SkillBar key={skill.label} skill={skill} />
-              ))}
-            </div>
+            {programming.map((skill) => (
+              <SkillBar key={skill.label} skill={skill} />
+            ))}
           </div>
         </div>
       </div>
