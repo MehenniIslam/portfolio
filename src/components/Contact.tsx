@@ -18,10 +18,10 @@ export default function Contact() {
 
     emailjs
       .sendForm(
-        "service_mu9ozq5",   // ton Service ID
-        "template_v8szh2k",  // ton Template ID
-        e.currentTarget,     // le formulaire
-        "LbbIRCJY3KXuxCAuO" // ton User ID
+        "service_mu9ozq5",
+        "template_v8szh2k",
+        e.currentTarget,
+        "LbbIRCJY3KXuxCAuO"
       )
       .then(
         () => {
@@ -36,7 +36,13 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20" style={{ backgroundColor: "#6B5B95" }}>
+    <section
+      id="contact"
+      className="py-20"
+      style={{
+        backgroundImage: `linear-gradient(to bottom right, hsl(var(--hero-gradient-from)), hsl(var(--hero-gradient-to)))`,
+      }}
+    >
       <div className="container mx-auto px-4 max-w-2xl">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -47,7 +53,7 @@ export default function Contact() {
           </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6 bg-white/10 p-8 rounded-lg shadow-lg border border-white/20">
+        <form className="space-y-6 bg-white/10 p-8 rounded-lg shadow-lg border border-white/20" onSubmit={handleSubmit}>
           <div className="flex items-center gap-2 border-b border-white/30 pb-2">
             <User size={20} className="text-white/80" />
             <input

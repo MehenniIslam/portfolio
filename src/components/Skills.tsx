@@ -41,11 +41,11 @@ const SkillBar = ({ skill }: { skill: Skill }) => {
     <div ref={barRef} className="mb-6 animate-slide-in-left">
       <div className="flex justify-between mb-2">
         <span className="text-white font-medium">{skill.label}</span>
-        <span className="text-white/80">{skill.percent}%</span>
+        <span className="text-white/70">{skill.percent}%</span>
       </div>
       <div className="h-3 bg-white/20 rounded-full overflow-hidden">
         <div
-          className="h-full bg-gradient-to-r from-primary to-accent rounded-full transition-all duration-1500 ease-out"
+          className="h-full bg-gradient-to-r from-primary to-hero-to rounded-full transition-all duration-1500 ease-out"
           style={{
             width: isVisible ? `${skill.percent}%` : "0%",
             transitionDuration: "1.5s",
@@ -61,18 +61,24 @@ export const Skills = () => {
   const programming = skills.filter((s) => s.category === "programming");
 
   return (
-    <section id="skills" className="py-20" style={{ backgroundColor: "#6B5B95" }}>
-      <div className="container mx-auto px-4">
+    <section
+      id="skills"
+      className="py-20"
+      style={{
+        backgroundImage: `linear-gradient(to bottom right, hsl(var(--hero-gradient-from)), hsl(var(--hero-gradient-to)))`,
+      }}
+    >
+      <div className="container mx-auto px-4 max-w-6xl">
         <div className="text-center mb-16 animate-fade-in">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Compétences
           </h2>
-          <p className="text-lg text-white/80 max-w-2xl mx-auto">
+          <p className="text-white/80 text-lg max-w-2xl mx-auto">
             Mes compétences linguistiques et techniques
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12">
           <div className="bg-white/10 p-8 rounded-lg shadow-lg border border-white/20">
             <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
               <span className="w-2 h-8 bg-primary rounded-full"></span>
