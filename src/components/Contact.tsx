@@ -21,7 +21,7 @@ export default function Contact() {
         "service_mu9ozq5",   // ton Service ID
         "template_v8szh2k",  // ton Template ID
         e.currentTarget,     // le formulaire
-        "LbbIRCJY3KXuxCAuO" // ton User ID / Public Key
+        "LbbIRCJY3KXuxCAuO" // ton User ID
       )
       .then(
         () => {
