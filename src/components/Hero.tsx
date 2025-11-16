@@ -1,6 +1,7 @@
 import { ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import heroBg from "@/assets/hero-bg.jpg";
+import myPhoto from "@/assets/my-photo.jpg"; 
 
 export const Hero = () => {
   const scrollToProjects = () => {
@@ -28,22 +29,34 @@ export const Hero = () => {
       </div>
 
       {/* Content */}
-      <div className="container mx-auto px-4 z-10 text-center">
-        <div className="max-w-4xl mx-auto animate-fade-in-up">
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-            Bienvenue sur mon portfolio
-          </h1>
-          <p className="text-xl md:text-2xl text-white/90 mb-8">
-            IUT informatique – projets, compétences et contact
-          </p>
-          <Button
-            onClick={scrollToProjects}
-            size="lg"
-            className="group bg-white text-primary hover:bg-white/90 shadow-lg hover:shadow-xl transition-all"
-          >
-            Voir mes projets
-            <ArrowDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
-          </Button>
+      <div className="container mx-auto px-4 z-10">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center animate-fade-in-up gap-8">
+          {/* Texte */}
+          <div className="text-center md:text-left">
+            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
+              Bienvenue sur mon portfolio
+            </h1>
+            <p className="text-xl md:text-2xl text-white/90 mb-8">
+              IUT informatique – projets, compétences et contact
+            </p>
+            <Button
+              onClick={scrollToProjects}
+              size="lg"
+              className="group bg-white text-primary hover:bg-white/90 shadow-lg hover:shadow-xl transition-all"
+            >
+              Voir mes projets
+              <ArrowDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
+            </Button>
+          </div>
+
+          {/* Portrait pro */}
+          <div className="mt-8 md:mt-0 flex-shrink-0">
+            <img
+              src={myPhoto}
+              alt="Portrait professionnel Islam Mehenni Meghraoui"
+              className="w-48 h-48 md:w-56 md:h-56 rounded-full object-cover shadow-xl border-4 border-white"
+            />
+          </div>
         </div>
       </div>
 
