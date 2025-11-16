@@ -43,17 +43,13 @@ export const Navigation = ({ darkMode, toggleDarkMode }: NavigationProps) => {
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          {/* Logo + Nom */}
-          <a
-            href="#home"
-            className="flex items-center gap-2"
-          >
+          {/* Logo uniquement */}
+          <a href="#home">
             <img
               src={logo}
-              alt="Logo Islam Mehenni"
+              alt="Logo"
               className="w-12 h-12 object-contain"
             />
-            <span className="text-xl font-bold text-foreground">Islam Mehenni</span>
           </a>
 
           {/* Desktop Navigation */}
