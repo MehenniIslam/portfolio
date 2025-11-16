@@ -26,26 +26,37 @@ const SkillBar = ({ skill }: { skill: Skill }) => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) setIsVisible(true);
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
       },
       { threshold: 0.1 }
     );
-    if (barRef.current) observer.observe(barRef.current);
+
+    if (barRef.current) {
+      observer.observe(barRef.current);
+    }
+
     return () => {
-      if (barRef.current) observer.unobserve(barRef.current);
+      if (barRef.current) {
+        observer.unobserve(barRef.current);
+      }
     };
   }, []);
 
   return (
-    <div ref={barRef} className="mb-6">
+    <div ref={barRef} className="mb-6 animate-slide-in-left">
       <div className="flex justify-between mb-2">
-        <span className="text-foreground dark:text-white font-medium">{skill.label}</span>
-        <span className="text-foreground/70 dark:text-white/70">{skill.percent}%</span>
+        <span className="text-foreground font-medium">{skill.label}</span>
+        <span className="text-muted-foreground">{skill.percent}%</span>
       </div>
-      <div className="h-3 bg-skill-bar-bg dark:bg-skill-bar-bg rounded-full overflow-hidden">
+      <div className="h-3 bg-skill-bg rounded-full overflow-hidden">
         <div
-          className="h-full bg-skill-bar-fill dark:bg-skill-bar-fill rounded-full transition-all duration-1500 ease-out"
-          style={{ width: isVisible ? `${skill.percent}%` : "0%" }}
+          className="h-full bg-gradient-to-r from-primary to-hero-to rounded-full transition-all duration-1500 ease-out"
+          style={{
+            width: isVisible ? `${skill.percent}%` : "0%",
+            transitionDuration: "1.5s",
+          }}
         />
       </div>
     </div>
@@ -57,34 +68,40 @@ export const Skills = () => {
   const programming = skills.filter((s) => s.category === "programming");
 
   return (
-    <section id="skills" className="py-20 bg-background dark:bg-background">
-      <div className="container mx-auto px-4 max-w-6xl">
-        <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground dark:text-white mb-4">
+    <section id="skills" className="py-20 bg-muted/30">
+      <div className="container mx-auto px-4">
+        <div className="text-center mb-16 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
             Compétences
           </h2>
-          <p className="text-foreground/80 dark:text-white/80 text-lg max-w-2xl mx-auto">
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
             Mes compétences linguistiques et techniques
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12">
-          <div className="bg-white/10 dark:bg-white/10 p-8 rounded-lg shadow-lg border border-white/20">
-            <h3 className="text-2xl font-bold text-foreground dark:text-white mb-6 flex items-center gap-2">
+        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+          <div className="bg-card p-8 rounded-lg shadow-lg border border-border">
+            <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+              <span className="w-2 h-8 bg-primary rounded-full"></span>
               Langues
             </h3>
-            {languages.map((skill) => (
-              <SkillBar key={skill.label} skill={skill} />
-            ))}
+            <div>
+              {languages.map((skill) => (
+                <SkillBar key={skill.label} skill={skill} />
+              ))}
+            </div>
           </div>
 
-          <div className="bg-white/10 dark:bg-white/10 p-8 rounded-lg shadow-lg border border-white/20">
-            <h3 className="text-2xl font-bold text-foreground dark:text-white mb-6 flex items-center gap-2">
+          <div className="bg-card p-8 rounded-lg shadow-lg border border-border">
+            <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
+              <span className="w-2 h-8 bg-primary rounded-full"></span>
               Programmation
             </h3>
-            {programming.map((skill) => (
-              <SkillBar key={skill.label} skill={skill} />
-            ))}
+            <div>
+              {programming.map((skill) => (
+                <SkillBar key={skill.label} skill={skill} />
+              ))}
+            </div>
           </div>
         </div>
       </div>

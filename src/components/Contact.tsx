@@ -1,61 +1,83 @@
 import { useState } from "react";
+import { Mail, User, MessageSquare, Send } from "lucide-react";
+import emailjs from "emailjs-com";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    // ouverture du client mail
-    window.location.href = `mailto:tonemail@example.com?subject=Contact de ${formData.name}&body=${formData.message} (${formData.email})`;
-    setFormData({ name: "", email: "", message: "" });
+
+    emailjs
+      .sendForm(
+        "service_mu9ozq5",   // ton Service ID
+        "template_v8szh2k",  // ton Template ID
+        e.currentTarget,     // le formulaire
+        "LbbIRCJY3KXuxCAuO" // ton User ID
+      )
+      .then(
+        () => {
+          alert("Message envoyé avec succès !");
+          setFormData({ name: "", email: "", message: "" });
+        },
+        (error) => {
+          console.error(error);
+          alert("Erreur lors de l'envoi. Réessaye plus tard.");
+        }
+      );
   };
 
   return (
-    <section id="contact" className="py-20 bg-background dark:bg-background">
-      <div className="container mx-auto px-4 max-w-xl">
-        <h2 className="text-4xl md:text-5xl font-bold text-foreground dark:text-white mb-8 text-center">
-          Contact
-        </h2>
-
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+    <section id="contact" className="contact-section">
+      <h2>Contactez-moi</h2>
+      <form onSubmit={handleSubmit} className="contact-form">
+        <div className="input-group">
+          <User size={20} />
           <input
             type="text"
             name="name"
-            placeholder="Nom"
+            placeholder="Votre nom"
             value={formData.name}
             onChange={handleChange}
-            className="p-3 rounded border border-skill-bar-bg dark:border-skill-bar-bg bg-gray-100 dark:bg-gray-800 text-foreground dark:text-white"
             required
           />
+        </div>
+
+        <div className="input-group">
+          <Mail size={20} />
           <input
             type="email"
             name="email"
-            placeholder="Email"
+            placeholder="Votre email"
             value={formData.email}
             onChange={handleChange}
-            className="p-3 rounded border border-skill-bar-bg dark:border-skill-bar-bg bg-gray-100 dark:bg-gray-800 text-foreground dark:text-white"
             required
           />
+        </div>
+
+        <div className="input-group textarea-group">
+          <MessageSquare size={20} />
           <textarea
             name="message"
-            placeholder="Message"
-            rows={5}
+            placeholder="Votre message"
             value={formData.message}
             onChange={handleChange}
-            className="p-3 rounded border border-skill-bar-bg dark:border-skill-bar-bg bg-gray-100 dark:bg-gray-800 text-foreground dark:text-white"
             required
           />
-          <button
-            type="submit"
-            className="bg-primary text-primary-foreground p-3 rounded font-bold hover:bg-primary/80 transition-colors"
-          >
-            Envoyer
-          </button>
-        </form>
-      </div>
+        </div>
+
+        <button type="submit" className="contact-button">
+          <Send size={18} /> Envoyer
+        </button>
+      </form>
     </section>
   );
 }
