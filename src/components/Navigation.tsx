@@ -48,8 +48,8 @@ export const Navigation = ({ darkMode, toggleDarkMode }: NavigationProps) => {
             <img
               src={logo}
               alt="Logo"
-              className="w-16 h-16 object-contain" // agrandi (16 → 64px)
-              style={{ maxWidth: "80px", maxHeight: "80px" }} // peut ajuster selon ton goût
+              className="w-24 h-24 object-contain" 
+              style={{ maxWidth: "80px", maxHeight: "80px" }}
             />
           </a>
 
