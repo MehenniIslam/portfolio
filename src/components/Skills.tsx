@@ -25,22 +25,26 @@ const SkillBar = ({ skill }: { skill: Skill }) => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(
-      ([entry]) => entry.isIntersecting && setIsVisible(true),
+      ([entry]) => {
+        if (entry.isIntersecting) setIsVisible(true);
+      },
       { threshold: 0.1 }
     );
     if (barRef.current) observer.observe(barRef.current);
-    return () => barRef.current && observer.unobserve(barRef.current);
+    return () => {
+      if (barRef.current) observer.unobserve(barRef.current);
+    };
   }, []);
 
   return (
-    <div ref={barRef} className="mb-6 animate-slide-in-left">
+    <div ref={barRef} className="mb-6">
       <div className="flex justify-between mb-2">
         <span className="text-white font-medium">{skill.label}</span>
         <span className="text-white/70">{skill.percent}%</span>
       </div>
       <div className="h-3 bg-white/20 rounded-full overflow-hidden">
         <div
-          className="h-full bg-gradient-to-r from-blue-400 to-purple-500 rounded-full transition-all duration-1500 ease-out"
+          className="h-full bg-primary rounded-full transition-all duration-1500 ease-out"
           style={{ width: isVisible ? `${skill.percent}%` : "0%" }}
         />
       </div>
@@ -53,15 +57,9 @@ export const Skills = () => {
   const programming = skills.filter((s) => s.category === "programming");
 
   return (
-    <section
-      id="skills"
-      className="py-20"
-      style={{
-        background: "linear-gradient(to right, #2563eb, #9333ea)",
-      }}
-    >
+    <section id="skills" className="py-20 bg-card">
       <div className="container mx-auto px-4 max-w-6xl">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Compétences
           </h2>
@@ -73,7 +71,6 @@ export const Skills = () => {
         <div className="grid md:grid-cols-2 gap-12">
           <div className="bg-white/10 p-8 rounded-lg shadow-lg border border-white/20">
             <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-              <span className="w-2 h-8 bg-white rounded-full"></span>
               Langues
             </h3>
             {languages.map((skill) => (
@@ -83,7 +80,6 @@ export const Skills = () => {
 
           <div className="bg-white/10 p-8 rounded-lg shadow-lg border border-white/20">
             <h3 className="text-2xl font-bold text-white mb-6 flex items-center gap-2">
-              <span className="w-2 h-8 bg-white rounded-full"></span>
               Programmation
             </h3>
             {programming.map((skill) => (

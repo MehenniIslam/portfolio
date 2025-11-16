@@ -36,15 +36,9 @@ const projects = [
 
 export const Projects = () => {
   return (
-    <section
-      id="projects"
-      className="py-20"
-      style={{
-        background: "linear-gradient(to right, #2563eb, #9333ea)",
-      }}
-    >
+    <section id="projects" className="py-20 bg-card">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16 animate-fade-in">
+        <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Mes Projets
           </h2>
@@ -54,11 +48,10 @@ export const Projects = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <div
               key={project.id}
               className="group bg-white/10 rounded-xl overflow-hidden shadow-lg border border-white/20 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
-              style={{ animationDelay: `${index * 0.1}s` }}
             >
               <div className="relative overflow-hidden h-64">
                 <img
@@ -72,7 +65,6 @@ export const Projects = () => {
                 <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-200 transition-colors">
                   {project.title}
                 </h3>
-
                 <p className="text-white/80 mb-4 line-clamp-3">{project.description}</p>
 
                 <div className="flex flex-wrap gap-2 mb-4">

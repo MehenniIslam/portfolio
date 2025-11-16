@@ -1,103 +1,58 @@
 import { useState } from "react";
-import { Mail, User, MessageSquare, Send } from "lucide-react";
-import emailjs from "emailjs-com";
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-
-    emailjs
-      .sendForm(
-        "service_mu9ozq5",
-        "template_v8szh2k",
-        e.currentTarget,
-        "LbbIRCJY3KXuxCAuO"
-      )
-      .then(
-        () => {
-          alert("Message envoyé avec succès !");
-          setFormData({ name: "", email: "", message: "" });
-        },
-        (error) => {
-          console.error(error);
-          alert("Erreur lors de l'envoi. Réessaye plus tard.");
-        }
-      );
+    alert("Formulaire envoyé !");
+    setFormData({ name: "", email: "", message: "" });
   };
 
   return (
-          <section
-            id="contact"
-            className="py-20 transition-all duration-700"
-            style={{
-              background: "linear-gradient(to right, #4f46e5, #9333ea)",
-            }}
-          >
+    <section id="contact" className="py-20 bg-card">
+      <div className="container mx-auto px-4 max-w-xl">
+        <h2 className="text-4xl md:text-5xl font-bold text-white mb-8 text-center">
+          Contact
+        </h2>
 
-      <div className="container mx-auto px-4 max-w-2xl">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Contactez-moi
-          </h2>
-          <p className="text-white/80 text-lg">
-            Une question, un projet ou juste dire bonjour ? Remplissez le formulaire ci-dessous !
-          </p>
-        </div>
-
-        <form className="space-y-6 bg-white/10 p-8 rounded-lg shadow-lg border border-white/20" onSubmit={handleSubmit}>
-          <div className="flex items-center gap-2 border-b border-white/30 pb-2">
-            <User size={20} className="text-white/80" />
-            <input
-              type="text"
-              name="name"
-              placeholder="Votre nom"
-              value={formData.name}
-              onChange={handleChange}
-              required
-              className="bg-transparent text-white placeholder-white/70 w-full focus:outline-none"
-            />
-          </div>
-
-          <div className="flex items-center gap-2 border-b border-white/30 pb-2">
-            <Mail size={20} className="text-white/80" />
-            <input
-              type="email"
-              name="email"
-              placeholder="Votre email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="bg-transparent text-white placeholder-white/70 w-full focus:outline-none"
-            />
-          </div>
-
-          <div className="flex items-start gap-2 border-b border-white/30 pb-2">
-            <MessageSquare size={20} className="text-white/80 mt-2" />
-            <textarea
-              name="message"
-              placeholder="Votre message"
-              value={formData.message}
-              onChange={handleChange}
-              required
-              className="bg-transparent text-white placeholder-white/70 w-full focus:outline-none resize-none h-32"
-            />
-          </div>
-
+        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+          <input
+            type="text"
+            name="name"
+            placeholder="Nom"
+            value={formData.name}
+            onChange={handleChange}
+            className="p-3 rounded bg-white/10 border border-white/20 text-white"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            className="p-3 rounded bg-white/10 border border-white/20 text-white"
+            required
+          />
+          <textarea
+            name="message"
+            placeholder="Message"
+            rows={5}
+            value={formData.message}
+            onChange={handleChange}
+            className="p-3 rounded bg-white/10 border border-white/20 text-white"
+            required
+          />
           <button
             type="submit"
-            className="w-full flex items-center justify-center gap-2 bg-primary text-white py-3 rounded-lg font-semibold hover:bg-primary/90 transition-all"
+            className="bg-primary text-primary-foreground p-3 rounded font-bold hover:bg-blue-700 transition-colors"
           >
-            <Send size={18} /> Envoyer
+            Envoyer
           </button>
         </form>
       </div>
