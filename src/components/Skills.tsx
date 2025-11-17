@@ -7,16 +7,16 @@ interface Skill {
 }
 
 const skills: Skill[] = [
-  { label: "Français", percent: 100, category: "languages" },
+  { label: "Français", percent: 95, category: "languages" },
   { label: "Anglais", percent: 80, category: "languages" },
-  { label: "Espagnol", percent: 70, category: "languages" },
+  { label: "Espagnol", percent: 80, category: "languages" },
   { label: "Arabe", percent: 85, category: "languages" },
-  { label: "HTML", percent: 95, category: "programming" },
+  { label: "HTML", percent: 85, category: "programming" },
   { label: "CSS", percent: 70, category: "programming" },
   { label: "C++", percent: 50, category: "programming" },
   { label: "PHP", percent: 55, category: "programming" },
   { label: "Python", percent: 85, category: "programming" },
-  { label: "SQL", percent: 85, category: "programming" },
+  { label: "SQL", percent: 65, category: "programming" },
 ];
 
 const SkillBar = ({ skill }: { skill: Skill }) => {
