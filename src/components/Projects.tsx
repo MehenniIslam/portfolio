@@ -41,6 +41,15 @@ const projects: Project[] = [
     tags: ["SQL", "Base de données", "Gestion de données"],
     link: "https://github.com/MehenniIslam/SQL_BaseDonne",
   },
+  {
+    id: 4,
+    title: "Jeu video Python Bubble Survivor",
+    description:
+      "J’ai créé le jeu Bubble Survivor en Python, un projet qui a été honoré par le titre de Lauréat de la Marne.",
+    image: sqlDbImg,
+    tags: ["SQL", "Base de données", "Gestion de données"],
+    link: "https://github.com/MehenniIslam/BubbleSurvivor",
+  },
 ];
 
 export const Projects = () => {
