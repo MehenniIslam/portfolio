@@ -48,7 +48,7 @@ const projects: Project[] = [
     description:
       "J’ai créé le jeu Bubble Survivor en Python, un projet qui a été honoré par le titre de Lauréat de la Marne.",
     image: bubbleImg,
-    tags: ["Python", "Jeu", "Lauréat"],
+    tags: ["SQL", "Base de données", "Gestion de données"],
     link: "https://github.com/MehenniIslam/BubbleSurvivor",
   },
 ];
@@ -73,12 +73,11 @@ export const Projects = () => {
               className="group bg-card rounded-xl overflow-hidden shadow-lg border border-border hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 animate-fade-in"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {/* Image cadrée avec aspect-video */}
-              <div className="relative overflow-hidden aspect-video">
+              <div className="relative overflow-hidden h-64">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover object-center group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
@@ -108,7 +107,6 @@ export const Projects = () => {
                   rel="noopener noreferrer"
                   className="w-full inline-flex items-center justify-center px-4 py-2 bg-primary text-white rounded-md hover:bg-primary/90 transition-colors"
                 >
-                  Voir plus
                   <ExternalLink className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
