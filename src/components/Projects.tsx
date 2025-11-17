@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import pegsolitaireImg from "@/assets/pegsolitaire.png";
 import vmLinuxImg from "@/assets/vm-linux.png";
 import sqlDbImg from "@/assets/sql-db.png";
+import bubbleImg from "@/assets/buble.png";
 
 interface Project {
   id: number;
@@ -46,7 +47,7 @@ const projects: Project[] = [
     title: "Jeu video Python Bubble Survivor",
     description:
       "J’ai créé le jeu Bubble Survivor en Python, un projet qui a été honoré par le titre de Lauréat de la Marne.",
-    image: sqlDbImg,
+    image: bubbleImg,
     tags: ["SQL", "Base de données", "Gestion de données"],
     link: "https://github.com/MehenniIslam/BubbleSurvivor",
   },
