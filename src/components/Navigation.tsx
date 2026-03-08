@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, X, Moon, Sun, Globe } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import { t } from "@/components/translations";
+import { t } from "./translations";
 import logo from "@/assets/logo.png";
 
 interface NavigationProps {
@@ -16,8 +16,10 @@ export const Navigation = ({ darkMode, toggleDarkMode, lang, setLang }: Navigati
   const [showLangMenu, setShowLangMenu] = useState(false);
   const content = t[lang].nav;
 
+  // AJOUT DE LA ROUTE /about ICI
   const navLinks = [
     { path: "/", label: content.home },
+    { path: "/about", label: content.about },
     { path: "/skills", label: content.skills },
     { path: "/projects", label: content.projects },
   ];
@@ -32,13 +34,13 @@ export const Navigation = ({ darkMode, toggleDarkMode, lang, setLang }: Navigati
             <img src={logo} alt="Logo" className="h-12 w-auto object-contain hover:scale-105 transition-transform" />
           </NavLink>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-6 lg:gap-8">
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
                 to={link.path}
                 className={({ isActive }) =>
-                  `transition-colors font-medium text-lg ${
+                  `transition-colors font-medium text-base lg:text-lg ${
                     isActive
                       ? "text-violet-500 dark:text-violet-400 border-b-2 border-violet-500"
                       : "text-slate-600 dark:text-slate-300 hover:text-violet-400 dark:hover:text-violet-300"
@@ -49,7 +51,7 @@ export const Navigation = ({ darkMode, toggleDarkMode, lang, setLang }: Navigati
               </NavLink>
             ))}
 
-            <div className="flex items-center gap-4 ml-4 pl-4 border-l border-slate-200 dark:border-slate-700">
+            <div className="flex items-center gap-2 lg:gap-4 ml-2 pl-2 lg:ml-4 lg:pl-4 border-l border-slate-200 dark:border-slate-700">
               <div className="relative">
                 <button 
                   onClick={() => setShowLangMenu(!showLangMenu)}
@@ -90,7 +92,7 @@ export const Navigation = ({ darkMode, toggleDarkMode, lang, setLang }: Navigati
         </div>
 
         {isOpen && (
-          <div className="md:hidden py-4 border-t border-violet-100 dark:border-violet-900/20 bg-white dark:bg-slate-900">
+          <div className="md:hidden py-4 border-t border-violet-100 dark:border-violet-900/20 bg-white dark:bg-slate-900 shadow-xl">
             {navLinks.map((link) => (
               <NavLink
                 key={link.path}
@@ -101,9 +103,9 @@ export const Navigation = ({ darkMode, toggleDarkMode, lang, setLang }: Navigati
                 {link.label}
               </NavLink>
             ))}
-            <div className="flex gap-2 px-4 py-2">
+            <div className="flex gap-2 px-4 py-2 mt-2">
                {languages.map(l => (
-                 <button key={l} onClick={() => {setLang(l); setIsOpen(false)}} className={`px-3 py-1 rounded-md ${lang === l ? 'bg-violet-500 text-white' : 'bg-slate-100 dark:bg-slate-800'}`}>{l}</button>
+                 <button key={l} onClick={() => {setLang(l); setIsOpen(false)}} className={`px-3 py-2 rounded-md font-bold flex-1 ${lang === l ? 'bg-violet-500 text-white' : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200'}`}>{l}</button>
                ))}
             </div>
           </div>

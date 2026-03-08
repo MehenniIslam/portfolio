@@ -1,9 +1,9 @@
 export const t = {
   FR: {
-    nav: { home: "Accueil", skills: "Compétences", projects: "Projets" },
+    nav: { home: "Accueil", about: "À propos", skills: "Compétences", projects: "Projets" },
     home: {
       greeting: "Bonjour, je suis",
-      description: "Étudiant en informatique à l'IUT, motivé et sérieux. Passionné par le développement logiciel et déterminé à me spécialiser en cybersécurité. Je m'investis pleinement pour apprendre et progresser.",
+      description: "Étudiant en informatique à l'IUT, motivé et sérieux. Passionné par le développement logiciel et déterminé à me spécialiser en cybersécurité.",
       cvFr: "CV Français",
       cvEn: "CV English",
       recentProjects: "Projets Récents",
@@ -18,6 +18,18 @@ export const t = {
       success: "Message envoyé avec succès !",
       error: "Erreur lors de l'envoi."
     },
+    about: {
+      title: "Mon",
+      titleSpan: "Profil",
+      subtitle: "Qui suis-je en dehors du code ?",
+      description: "Rigoureux, autonome et déterminé, je m'investis pleinement dans chaque projet pour apprendre et progresser. J'aime relever des défis techniques tout en gardant un équilibre avec mes passions personnelles.",
+      hobbiesTitle: "Mes Passions",
+      hobbies: ["Football", "Volleyball", "Programmation", "Jeux Vidéo"],
+      infoTitle: "Informations pratiques",
+      location: "51100, Reims",
+      license: "Permis B",
+      callMe: "M'appeler"
+    },
     projects: {
       title: "Mes",
       titleSpan: "Projets",
@@ -29,12 +41,10 @@ export const t = {
       titleSpan: "Compétences",
       subtitle: "Technologies acquises à l'IUT et en autodidacte"
     },
-    footer: {
-      rights: "Tous droits réservés."
-    }
+    footer: { rights: "Tous droits réservés." }
   },
   EN: {
-    nav: { home: "Home", skills: "Skills", projects: "Projects" },
+    nav: { home: "Home", about: "About", skills: "Skills", projects: "Projects" },
     home: {
       greeting: "Hello, I am",
       description: "Computer Science student at the IUT, highly motivated and serious. Passionate about software development and determined to specialize in cybersecurity.",
@@ -52,6 +62,18 @@ export const t = {
       success: "Message sent successfully!",
       error: "Error sending message."
     },
+    about: {
+      title: "My",
+      titleSpan: "Profile",
+      subtitle: "Who am I beyond the code?",
+      description: "Rigorous, autonomous, and determined, I fully invest myself in every project to learn and progress. I enjoy tackling technical challenges while keeping a balance with my personal passions.",
+      hobbiesTitle: "My Hobbies",
+      hobbies: ["Football", "Volleyball", "Programming", "Gaming"],
+      infoTitle: "Practical Info",
+      location: "51100, Reims, France",
+      license: "Driver's License (B)",
+      callMe: "Call me"
+    },
     projects: {
       title: "My",
       titleSpan: "Projects",
@@ -63,12 +85,10 @@ export const t = {
       titleSpan: "Skills",
       subtitle: "Technologies learned at IUT and self-taught"
     },
-    footer: {
-      rights: "All rights reserved."
-    }
+    footer: { rights: "All rights reserved." }
   },
   ES: {
-    nav: { home: "Inicio", skills: "Habilidades", projects: "Proyectos" },
+    nav: { home: "Inicio", about: "Sobre mí", skills: "Habilidades", projects: "Proyectos" },
     home: {
       greeting: "Hola, soy",
       description: "Estudiante de informática en el IUT, motivado y serio. Apasionado por el desarrollo de software y decidido a especializarme en ciberseguridad.",
@@ -80,11 +100,23 @@ export const t = {
       exploreSkills: "Explorar mis habilidades",
       contactTitle: "Contáctame",
       namePlaceholder: "Tu nombre",
-      emailPlaceholder: "Tu correo electrónico",
+      emailPlaceholder: "Tu correo",
       messagePlaceholder: "Tu mensaje",
       send: "Enviar",
       success: "¡Mensaje enviado con éxito!",
       error: "Error al enviar el mensaje."
+    },
+    about: {
+      title: "Mi",
+      titleSpan: "Perfil",
+      subtitle: "¿Quién soy más allá del código?",
+      description: "Riguroso, autónomo y decidido, me invierto plenamente en cada proyecto para aprender y progresar. Disfruto de los retos técnicos manteniendo un equilibrio con mis pasiones.",
+      hobbiesTitle: "Mis Pasiones",
+      hobbies: ["Fútbol", "Voleibol", "Programación", "Videojuegos"],
+      infoTitle: "Información práctica",
+      location: "51100, Reims, Francia",
+      license: "Carnet de conducir (B)",
+      callMe: "Llámame"
     },
     projects: {
       title: "Mis",
@@ -97,12 +129,10 @@ export const t = {
       titleSpan: "Habilidades",
       subtitle: "Tecnologías aprendidas en IUT y de forma autodidacta"
     },
-    footer: {
-      rights: "Todos los derechos reservados."
-    }
+    footer: { rights: "Todos los derechos reservados." }
   },
   AR: {
-    nav: { home: "الرئيسية", skills: "المهارات", projects: "المشاريع" },
+    nav: { home: "الرئيسية", about: "نبذة عني", skills: "المهارات", projects: "المشاريع" },
     home: {
       greeting: "مرحباً، أنا",
       description: "طالب علوم الحاسوب في المعهد الجامعي للتكنولوجيا، متحمس وجاد. شغوف بتطوير البرمجيات ومصمم على التخصص في الأمن السيبراني.",
@@ -114,11 +144,23 @@ export const t = {
       exploreSkills: "استكشاف مهاراتي",
       contactTitle: "اتصل بي",
       namePlaceholder: "اسمك",
-      emailPlaceholder: "بريدك الإلكتروني",
+      emailPlaceholder: "بريدك",
       messagePlaceholder: "رسالتك",
       send: "إرسال",
-      success: "تم إرسال الرسالة بنجاح!",
-      error: "حدث خطأ أثناء إرسال الرسالة."
+      success: "تم الإرسال بنجاح!",
+      error: "حدث خطأ."
+    },
+    about: {
+      title: "ملفي",
+      titleSpan: "الشخصي",
+      subtitle: "من أنا بعيداً عن البرمجة؟",
+      description: "دقيق، مستقل، وعازم، أستثمر نفسي بالكامل في كل مشروع للتعلم والتقدم. أستمتع بمواجهة التحديات التقنية مع الحفاظ على التوازن مع شغفي الشخصي.",
+      hobbiesTitle: "هواياتي",
+      hobbies: ["كرة القدم", "الكرة الطائرة", "البرمجة", "ألعاب الفيديو"],
+      infoTitle: "معلومات عملية",
+      location: "51100، ريمس، فرنسا",
+      license: "رخصة قيادة (B)",
+      callMe: "اتصل بي"
     },
     projects: {
       title: "",
@@ -129,10 +171,8 @@ export const t = {
     skills: {
       title: "",
       titleSpan: "مهاراتي",
-      subtitle: "التقنيات التي تعلمتها في المعهد وبنفسي"
+      subtitle: "التقنيات التي تعلمتها"
     },
-    footer: {
-      rights: "جميع الحقوق محفوظة."
-    }
+    footer: { rights: "جميع الحقوق محفوظة." }
   }
 };
