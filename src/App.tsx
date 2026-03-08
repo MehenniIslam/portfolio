@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navigation } from "./components/Navigation";
-import { Home } from "./pages/Home";
-import { Skills } from "./pages/Skills";
-import { Projects } from "./pages/Projects";
+import { Home } from "./components/Home";
+import { Skills } from "./components/Skills";
+import { Projects } from "./components/Projects";
 import NotFound from "./pages/NotFound";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
