@@ -10,20 +10,26 @@ export const Home = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const content = t[lang].home;
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    emailjs.sendForm("service_mu9ozq5", "template_v8szh2k", e.currentTarget, "LbbIRCJY3KXuxCAuO")
-      .then(() => {
+
+    emailjs
+      .sendForm(
+        "service_mu9ozq5",   
+        "template_v8szh2k",  
+        e.currentTarget,
+        "LbbIRCJY3KXuxCAuO"  
+      )
+      .then(
+        () => {
           alert(content.success);
           setFormData({ name: "", email: "", message: "" });
-        }, (error) => {
-          console.error(error);
+        },
+        (error) => {
+          console.error("Erreur EmailJS:", error);
           alert(content.error);
-        });
+        }
+      );
   };
 
   return (
