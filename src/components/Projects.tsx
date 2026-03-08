@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
-import { t } from "@/translations";
+import { t } from "@/components/translations";
 import bubbleImg from "@/assets/buble.png";
 import pegsolitaireImg from "@/assets/pegsolitaire.png";
 import vmLinuxImg from "@/assets/vm-linux.png";

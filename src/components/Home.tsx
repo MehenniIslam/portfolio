@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Mail, User, MessageSquare, Send, Download, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import emailjs from "emailjs-com";
-import { t } from "@/translations";
+import { t } from "@/components/translations";
 import photoAvecCasque from "@/assets/photo-casque.jpg"; 
 import photoSansCasque from "@/assets/photo-sans-casque.jpg"; 
 

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Menu, X, Moon, Sun, Globe } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import { t } from "@/translations";
+import { t } from "@/components/translations";
 import logo from "@/assets/logo.png";
 
 interface NavigationProps {

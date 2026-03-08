@@ -1,5 +1,5 @@
 import { Github, Linkedin, Mail } from "lucide-react";
-import { t } from "@/translations";
+import { t } from "@/components/translations";
 
 export const Footer = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
   const currentYear = new Date().getFullYear();

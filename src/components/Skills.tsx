@@ -1,4 +1,4 @@
-import { t } from "@/translations";
+import { t } from "@/components/translations";
 
 const categories = [
   {
@@ -53,4 +53,29 @@ export const Skills = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
 
       <div className="flex flex-col gap-12">
         {categories.map((category, catIdx) => (
-          <div key={category.title} className="bg-white/50 dark:bg-slate-900/30 backdrop
+          <div key={category.title} className="bg-white/50 dark:bg-slate-900/30 backdrop-blur-sm p-8 rounded-3xl shadow-sm border border-slate-200 dark:border-slate-800 animate-fade-in-up" style={{ animationDelay: `${catIdx * 0.1}s` }}>
+            <h3 className="text-2xl font-bold mb-8 pl-4 border-l-4 border-violet-500">{category.title}</h3>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+              {category.skills.map((skill) => (
+                <a
+                  key={skill.name}
+                  href={skill.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group flex flex-col items-center justify-center p-6 bg-slate-100/50 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-700 hover:border-violet-500 hover:shadow-[0_0_20px_rgba(139,92,246,0.3)] transition-all transform hover:-translate-y-2"
+                >
+                  {skill.icon.startsWith("http") ? (
+                    <img src={skill.icon} alt={skill.name} className="w-12 h-12 mb-4 group-hover:scale-110 transition-transform" />
+                  ) : (
+                    <span className="text-4xl mb-4 group-hover:scale-110 transition-transform block">{skill.icon}</span>
+                  )}
+                  <span className="text-sm font-bold text-slate-700 dark:text-slate-300 text-center">{skill.name}</span>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
