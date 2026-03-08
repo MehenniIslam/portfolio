@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Mail, User, MessageSquare, Send, Download, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import emailjs from "emailjs-com";
-import { t } from "@/components/translations";
+import { t } from "./translations"; 
 import photoAvecCasque from "@/assets/photo-casque.jpg"; 
 import photoSansCasque from "@/assets/photo-sans-casque.jpg"; 
 
@@ -10,15 +10,19 @@ export const Home = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const content = t[lang].home;
 
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     emailjs
       .sendForm(
-        "service_mu9ozq5",   
-        "template_v8szh2k",  
+        "service_mu9ozq5",   // Ton Service ID
+        "template_v8szh2k",  // Ton Template ID
         e.currentTarget,
-        "LbbIRCJY3KXuxCAuO"  
+        "LbbIRCJY3KXuxCAuO"  // Ta clé publique (Public Key)
       )
       .then(
         () => {
@@ -35,8 +39,10 @@ export const Home = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
   return (
     <div className="pt-32 pb-12 px-4 flex flex-col items-center justify-center">
       
+      {/* HEADER / PRESENTATION */}
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 mb-32 animate-fade-in-up">
         
+        {/* EFFET PHOTO */}
         <div className="flex-shrink-0 relative group w-64 h-64 rounded-3xl overflow-hidden shadow-2xl border-2 border-violet-500/50 cursor-pointer">
           <img src={photoSansCasque} alt="Islam" className="absolute inset-0 w-full h-full object-cover" />
           <img src={photoAvecCasque} alt="Islam Casque" className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0" />
@@ -60,6 +66,7 @@ export const Home = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
         </div>
       </div>
 
+      {/* PROJETS RECENTS */}
       <div className="w-full max-w-5xl mb-32">
         <div className="flex justify-between items-end mb-8">
           <h2 className="text-3xl font-bold">{content.recentProjects}</h2>
@@ -79,6 +86,7 @@ export const Home = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
         </div>
       </div>
 
+      {/* APERCU COMPETENCES */}
       <div className="w-full max-w-5xl mb-32 text-center">
         <h2 className="text-3xl font-bold mb-8">{content.skillsTitle}</h2>
         <div className="flex flex-wrap justify-center gap-4 mb-8">
@@ -93,6 +101,7 @@ export const Home = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
         </Link>
       </div>
 
+      {/* CONTACT */}
       <div id="contact" className="w-full max-w-lg bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-8 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800">
         <h2 className="text-2xl font-bold text-center mb-8 text-slate-900 dark:text-white">{content.contactTitle}</h2>
         <form onSubmit={handleSubmit} className="space-y-5">
