@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Navigation } from "./components/Navigation";
+import { Footer } from "./components/Footer";
 import { Home } from "./components/Home";
 import { Skills } from "./components/Skills";
 import { Projects } from "./components/Projects";
@@ -14,6 +15,7 @@ const queryClient = new QueryClient();
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(true);
+  const [lang, setLang] = useState("FR");
 
   useEffect(() => {
     if (darkMode) {
@@ -31,14 +33,17 @@ const App = () => {
         <Toaster />
         <Sonner />
         <BrowserRouter>
-          <div className="min-h-screen bg-gray-50 dark:bg-black text-gray-900 dark:text-white transition-colors duration-300">
-            <Navigation darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/skills" element={<Skills />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+          <div className="min-h-screen bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 transition-colors duration-300 flex flex-col">
+            <Navigation darkMode={darkMode} toggleDarkMode={toggleDarkMode} lang={lang} setLang={setLang} />
+            <main className="flex-grow">
+              <Routes>
+                <Route path="/" element={<Home lang={lang} />} />
+                <Route path="/skills" element={<Skills lang={lang} />} />
+                <Route path="/projects" element={<Projects lang={lang} />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+            <Footer />
           </div>
         </BrowserRouter>
       </TooltipProvider>
