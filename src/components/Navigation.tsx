@@ -1,32 +1,33 @@
 import { useState } from "react";
 import { Menu, X, Moon, Sun, Globe } from "lucide-react";
 import { NavLink } from "react-router-dom";
-import logo from "@/assets/logo.png"; // Assure-toi d'avoir ton logo ici
+import { t } from "@/translations";
+import logo from "@/assets/logo.png";
 
 interface NavigationProps {
   darkMode: boolean;
   toggleDarkMode: () => void;
-  lang: string;
-  setLang: (lang: string) => void;
+  lang: "FR" | "EN" | "ES" | "AR";
+  setLang: (lang: "FR" | "EN" | "ES" | "AR") => void;
 }
 
 export const Navigation = ({ darkMode, toggleDarkMode, lang, setLang }: NavigationProps) => {
   const [isOpen, setIsOpen] = useState(false);
   const [showLangMenu, setShowLangMenu] = useState(false);
+  const content = t[lang].nav;
 
   const navLinks = [
-    { path: "/", label: "Accueil" },
-    { path: "/skills", label: "Compétences" },
-    { path: "/projects", label: "Projets" },
+    { path: "/", label: content.home },
+    { path: "/skills", label: content.skills },
+    { path: "/projects", label: content.projects },
   ];
 
-  const languages = ["FR", "EN", "ES", "AR"];
+  const languages: ("FR" | "EN" | "ES" | "AR")[] = ["FR", "EN", "ES", "AR"];
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-lg shadow-sm border-b border-violet-200 dark:border-violet-900/30 transition-all duration-300">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-slate-900/40 backdrop-blur-lg shadow-sm border-b border-violet-200 dark:border-violet-900/30 transition-all duration-300">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          
           <NavLink to="/" className="flex items-center animate-fade-in-left">
             <img src={logo} alt="Logo" className="h-12 w-auto object-contain hover:scale-105 transition-transform" />
           </NavLink>

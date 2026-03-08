@@ -1,14 +1,16 @@
 import { Github, Linkedin, Mail } from "lucide-react";
+import { t } from "@/translations";
 
-export const Footer = () => {
+export const Footer = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
   const currentYear = new Date().getFullYear();
+  const content = t[lang].footer;
 
   return (
-    <footer className="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-8 mt-auto">
+    <footer className="bg-white/50 dark:bg-slate-900/20 border-t border-slate-200 dark:border-slate-800/50 py-8 mt-auto backdrop-blur-sm">
       <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-4">
         <div className="text-center md:text-left">
           <p className="text-slate-600 dark:text-slate-400 text-sm">
-            © {currentYear} Islam Mehenni Meghraoui. Tous droits réservés.
+            © {currentYear} Islam Mehenni Meghraoui. {content.rights}
           </p>
         </div>
         <div className="flex gap-6">
