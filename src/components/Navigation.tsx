@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Menu, X, Moon, Sun } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo.png";
+import { NavLink } from "react-router-dom";
 
 interface NavigationProps {
   darkMode: boolean;
@@ -10,97 +9,64 @@ interface NavigationProps {
 
 export const Navigation = ({ darkMode, toggleDarkMode }: NavigationProps) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-      setIsOpen(false);
-    }
-  };
 
   const navLinks = [
-    { id: "home", label: "Home" },
-    { id: "skills", label: "Compétences" },
-    { id: "projects", label: "Projets" },
-    { id: "contact", label: "Contact" },
+    { path: "/", label: "Accueil" },
+    { path: "/skills", label: "Compétences" },
+    { path: "/projects", label: "Projets" },
   ];
 
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/80 backdrop-blur-lg shadow-lg border-b border-border"
-          : "bg-transparent"
-      }`}
-    >
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-white/80 dark:bg-black/80 backdrop-blur-lg shadow-md border-b border-purple-500/20 transition-all duration-300">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
-          
-          {/* Logo */}
-          <a href="#home">
-            <img
-              src={logo}
-              alt="Logo"
-              className="w-24 h-24 object-contain"
-              style={{ maxWidth: "80px", maxHeight: "80px" }}
-            />
-          </a>
-
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className={`transition-colors font-medium ${
-                  darkMode
-                    ? "text-white hover:text-purple-300"
-                    : "text-purple-600 hover:text-purple-800"
-                }`}
-              >
-                {link.label}
-              </button>
-            ))}
-
-            <Button variant="ghost" size="icon" onClick={toggleDarkMode} className="ml-4">
-              {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </Button>
+          <div className="text-xl font-bold text-purple-600 dark:text-purple-400 animate-fade-in-left">
+            Islam Mehenni Meghraoui
           </div>
 
-          {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center gap-2">
-            <Button variant="ghost" size="icon" onClick={toggleDarkMode}>
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.path}
+                to={link.path}
+                className={({ isActive }) =>
+                  `transition-colors font-medium ${
+                    isActive
+                      ? "text-purple-600 dark:text-purple-400 border-b-2 border-purple-500"
+                      : "text-gray-600 dark:text-gray-300 hover:text-purple-500 dark:hover:text-purple-300"
+                  }`
+                }
+              >
+                {link.label}
+              </NavLink>
+            ))}
+
+            <button onClick={toggleDarkMode} className="p-2 rounded-full hover:bg-purple-100 dark:hover:bg-purple-900/30 transition-colors text-purple-600 dark:text-purple-400">
               {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
-            </Button>
-            <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)}>
+            </button>
+          </div>
+
+          <div className="md:hidden flex items-center gap-2">
+            <button onClick={toggleDarkMode} className="p-2 text-purple-600 dark:text-purple-400">
+              {darkMode ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+            </button>
+            <button onClick={() => setIsOpen(!isOpen)} className="p-2 text-purple-600 dark:text-purple-400">
               {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-            </Button>
+            </button>
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {isOpen && (
-          <div className="md:hidden py-4 border-t border-border bg-background/95 backdrop-blur-lg">
+          <div className="md:hidden py-4 border-t border-purple-500/20 bg-white dark:bg-black">
             {navLinks.map((link) => (
-              <button
-                key={link.id}
-                onClick={() => scrollToSection(link.id)}
-                className={`block w-full text-left px-4 py-3 transition-colors ${
-                  darkMode
-                    ? "text-white hover:text-purple-300 hover:bg-accent"
-                    : "text-purple-600 hover:text-purple-800 hover:bg-accent"
-                }`}
+              <NavLink
+                key={link.path}
+                to={link.path}
+                onClick={() => setIsOpen(false)}
+                className="block w-full text-left px-4 py-3 text-gray-800 dark:text-gray-200 hover:bg-purple-50 dark:hover:bg-purple-900/20"
               >
                 {link.label}
-              </button>
+              </NavLink>
             ))}
           </div>
         )}
