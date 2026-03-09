@@ -6,7 +6,7 @@ import { Home } from "./components/Home";
 import { About } from "./components/About";
 import { Skills } from "./components/Skills";
 import { Projects } from "./components/Projects";
-import NotFound from "./pages/NotFound";
+
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -14,7 +14,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setIsLoading(false), 2800);
+    setTimeout(() => setIsLoading(false), 3000);
   }, []);
 
   useEffect(() => {
@@ -27,17 +27,14 @@ const App = () => {
     return (
       <div className="h-screen w-screen flex items-center justify-center bg-slate-950 overflow-hidden">
         <div className="relative flex flex-col items-center justify-center h-64">
-          
           <div className="flex items-baseline text-[8rem] leading-none font-extrabold text-slate-100 relative">
             <span className="relative flex justify-center">
               <div className="w-7 h-7 bg-violet-500 rounded-full absolute -top-1 animate-pixar-ball z-10 shadow-[0_0_20px_rgba(139,92,246,0.8)]"></div>
-              
               <span className="block animate-pixar-i origin-bottom">ı</span>
             </span>
             <span>m</span>
             <span>m</span>
           </div>
-
         </div>
       </div>
     );
