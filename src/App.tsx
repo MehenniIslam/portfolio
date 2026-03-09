@@ -7,6 +7,10 @@ import { About } from "./components/About";
 import { Skills } from "./components/Skills";
 import { Projects } from "./components/Projects";
 
+// Sécurité : Si NotFound.tsx n'existe pas, ça évite la page blanche !
+const NotFoundFallback = () => (
+  <div className="pt-40 text-center text-2xl font-bold">Page introuvable (404)</div>
+);
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -14,7 +18,8 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setIsLoading(false), 3000);
+    // On rallonge le temps d'attente à 3.8s pour laisser la nouvelle animation se finir
+    setTimeout(() => setIsLoading(false), 3800);
   }, []);
 
   useEffect(() => {
@@ -50,7 +55,7 @@ const App = () => {
             <Route path="/about" element={<About lang={lang} />} />
             <Route path="/skills" element={<Skills lang={lang} />} />
             <Route path="/projects" element={<Projects lang={lang} />} />
-            <Route path="*" element={<NotFound />} />
+            <Route path="*" element={<NotFoundFallback />} />
           </Routes>
         </main>
         <Footer lang={lang} />
