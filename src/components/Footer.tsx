@@ -17,7 +17,7 @@ export const Footer = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
           <a href="https://github.com/MehenniIslam" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-violet-500 transition-transform hover:scale-110">
             <Github className="h-6 w-6" />
           </a>
-          <a href="https://linkedin.com/in/ton-profil" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-violet-500 transition-transform hover:scale-110">
+          <a href="https://www.linkedin.com/in/islam-mehenni-43a431263/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-violet-500 transition-transform hover:scale-110">
             <Linkedin className="h-6 w-6" />
           </a>
           {/* LIEN TELEPHONE ICI */}
