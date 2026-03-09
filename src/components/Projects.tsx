@@ -1,16 +1,17 @@
 import { useState } from "react";
-import { ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
+import { ExternalLink, ChevronLeft, ChevronRight, Github, Play, X } from "lucide-react";
 import { t } from "../components/translations";
 
 import bubbleImg from "@/assets/buble.png";
 import pegsolitaireImg from "@/assets/pegsolitaire.png";
 import vmLinuxImg from "@/assets/vm-linux.png";
 import sqlDbImg from "@/assets/sql-db.png";
-import easportImg from "@/assets/Easport.png"; 
+import easportImg from "@/assets/easport.png"; 
 import easportVideo from "@/assets/Easport.mov";
 
 export const Projects = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [activeVideo, setActiveVideo] = useState<string | null>(null); // State pour le pop-up vidéo
   const content = t[lang].projects;
 
   const projects = [
@@ -106,41 +107,26 @@ export const Projects = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
             }
 
             return (
-              <a
+              <div
                 key={project.id}
-                href={project.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="absolute w-[90%] md:w-full max-w-lg bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700 transition-all duration-500 ease-out block group"
+                className="absolute w-[90%] md:w-full max-w-lg bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-3xl overflow-hidden shadow-2xl border border-slate-200 dark:border-slate-700 transition-all duration-500 ease-out flex flex-col group"
                 style={{ transform: transformStyle, zIndex, opacity }}
               >
-                <div className="relative h-60 bg-black overflow-hidden">
-                  {project.video ? (
-                    <video
-                      src={project.video}
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                    />
-                  ) : (
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    />
-                  )}
-
+                <div className="relative h-60 bg-black overflow-hidden flex-shrink-0">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent pointer-events-none" />
                   <h3 className="absolute bottom-4 left-6 text-2xl font-bold text-white drop-shadow-md pointer-events-none">
                     {project.title}
                   </h3>
                 </div>
 
-                <div className="p-6">
-                  <p className="text-slate-700 dark:text-slate-300 mb-6 line-clamp-3">{project.description}</p>
-                  <div className="flex flex-wrap gap-2">
+                <div className="p-6 flex flex-col flex-grow">
+                  <p className="text-slate-700 dark:text-slate-300 mb-6 line-clamp-2">{project.description}</p>
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {project.tags.map((tag) => (
                       <span
                         key={tag}
@@ -150,8 +136,21 @@ export const Projects = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
                       </span>
                     ))}
                   </div>
+
+                  
+                  <div className="mt-auto flex gap-3">
+                    <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex-1 inline-flex items-center justify-center py-3 bg-slate-900 dark:bg-slate-800 hover:bg-violet-600 text-white rounded-xl transition-colors font-medium gap-2">
+                      <Github size={18} /> {content.viewGithub}
+                    </a>
+                    
+                    {project.video && (
+                      <button onClick={() => setActiveVideo(project.video!)} className="flex-1 inline-flex items-center justify-center py-3 bg-violet-600 hover:bg-violet-500 text-white rounded-xl transition-colors font-medium gap-2">
+                        <Play size={18} /> {content.watchVideo}
+                      </button>
+                    )}
+                  </div>
                 </div>
-              </a>
+              </div>
             );
           })}
         </div>
@@ -167,34 +166,25 @@ export const Projects = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
       <h3 className="text-3xl font-bold mb-8 pl-4 border-l-4 border-violet-500">{content.allProjects}</h3>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
         {projects.map((project) => (
-          <a
+          <div
             key={`grid-${project.id}`}
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
             className="group flex flex-col bg-white/50 dark:bg-slate-900/40 backdrop-blur-sm rounded-2xl overflow-hidden shadow-lg border border-slate-200 dark:border-slate-800 transition-all hover:-translate-y-2 hover:border-violet-500"
           >
             <div className="h-48 overflow-hidden relative bg-black">
-              {project.video ? (
-                <video
-                  src={project.video}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover opacity-80 group-hover:scale-110 transition-transform duration-500"
-                />
-              ) : (
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                />
-              )}
-
-              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white gap-2">
-                <ExternalLink className="h-10 w-10" />
-                <span className="font-bold">{content.viewGithub}</span>
+              <img
+                src={project.image}
+                alt={project.title}
+                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center text-white gap-4">
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-violet-400">
+                  <ExternalLink className="h-6 w-6" /> <span className="font-bold">{content.viewGithub}</span>
+                </a>
+                {project.video && (
+                  <button onClick={() => setActiveVideo(project.video!)} className="flex items-center gap-2 hover:text-violet-400">
+                    <Play className="h-6 w-6" /> <span className="font-bold">{content.watchVideo}</span>
+                  </button>
+                )}
               </div>
             </div>
             <div className="p-6 flex flex-col flex-grow">
@@ -211,9 +201,36 @@ export const Projects = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
                 ))}
               </div>
             </div>
-          </a>
+          </div>
         ))}
       </div>
+
+
+      {activeVideo && (
+        <div 
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4 animate-fade-in-up" 
+          onClick={() => setActiveVideo(null)}
+        >
+          <div 
+            className="relative w-full max-w-5xl bg-slate-900 rounded-3xl overflow-hidden shadow-[0_0_50px_rgba(139,92,246,0.3)] border border-slate-700"
+            onClick={(e) => e.stopPropagation()} 
+          >
+            <button 
+              onClick={() => setActiveVideo(null)} 
+              className="absolute top-4 right-4 z-10 p-2 bg-black/50 hover:bg-violet-600 rounded-full text-white transition-colors"
+            >
+              <X size={24} />
+            </button>
+            <video 
+              src={activeVideo} 
+              controls 
+              autoPlay 
+              className="w-full h-auto max-h-[85vh] object-contain bg-black" 
+            />
+          </div>
+        </div>
+      )}
+
     </div>
   );
 };

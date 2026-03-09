@@ -7,6 +7,7 @@ import { About } from "./components/About";
 import { Skills } from "./components/Skills";
 import { Projects } from "./components/Projects";
 import NotFound from "./pages/NotFound";
+import logo from "@/assets/logo.png";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -14,7 +15,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    setTimeout(() => setIsLoading(false), 2000);
+    setTimeout(() => setIsLoading(false), 2200);
   }, []);
 
   useEffect(() => {
@@ -25,8 +26,13 @@ const App = () => {
 
   if (isLoading) {
     return (
-      <div className="h-screen w-screen flex items-center justify-center bg-slate-950">
-        <div className="w-16 h-16 border-4 border-violet-500 border-t-transparent rounded-full animate-spin"></div>
+      <div className="h-screen w-screen flex items-center justify-center bg-slate-950 overflow-hidden">
+        <div className="relative flex flex-col items-center justify-end h-64 w-64">
+          {/* La balle violette qui tombe */}
+          <div className="w-12 h-12 bg-violet-500 rounded-full absolute top-0 animate-ball-smash z-10 shadow-[0_0_20px_rgba(139,92,246,0.6)]"></div>
+          {/* Ton Logo qui se fait écraser */}
+          <img src={logo} alt="Logo" className="w-28 h-auto animate-logo-smash relative z-0 origin-bottom" />
+        </div>
       </div>
     );
   }
@@ -38,7 +44,7 @@ const App = () => {
         <main className="flex-grow">
           <Routes>
             <Route path="/" element={<Home lang={lang} />} />
-            <Route path="/about" element={<About lang={lang} />} /> {/* NOUVELLE ROUTE */}
+            <Route path="/about" element={<About lang={lang} />} />
             <Route path="/skills" element={<Skills lang={lang} />} />
             <Route path="/projects" element={<Projects lang={lang} />} />
             <Route path="*" element={<NotFound />} />
