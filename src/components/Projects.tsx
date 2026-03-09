@@ -6,7 +6,7 @@ import bubbleImg from "@/assets/buble.png";
 import pegsolitaireImg from "@/assets/pegsolitaire.png";
 import vmLinuxImg from "@/assets/vm-linux.png";
 import sqlDbImg from "@/assets/sql-db.png";
-import easportImg from "@/assets/easport.png"; 
+import easportImg from "@/assets/Easport.png"; 
 import easportVideo from "@/assets/Easport.mov";
 
 export const Projects = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
