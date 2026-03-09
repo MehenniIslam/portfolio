@@ -34,12 +34,14 @@ export const t = {
       title: "Mes",
       titleSpan: "Projets",
       subtitle: "Découvrez mes réalisations techniques",
-      allProjects: "Tous les projets"
+      allProjects: "Tous les projets",
+      viewGithub: "Voir sur GitHub"
     },
     skills: {
       title: "Mes",
       titleSpan: "Compétences",
-      subtitle: "Technologies acquises à l'IUT et en autodidacte"
+      subtitle: "Technologies acquises à l'IUT et en autodidacte",
+      categories: ["Langages de Programmation", "Frameworks & Librairies", "Outils & Logiciels", "Langues"]
     },
     footer: { rights: "Tous droits réservés." }
   },
@@ -78,12 +80,14 @@ export const t = {
       title: "My",
       titleSpan: "Projects",
       subtitle: "Discover my technical achievements",
-      allProjects: "All projects"
+      allProjects: "All projects",
+      viewGithub: "View on GitHub"
     },
     skills: {
       title: "My",
       titleSpan: "Skills",
-      subtitle: "Technologies learned at IUT and self-taught"
+      subtitle: "Technologies learned at IUT and self-taught",
+      categories: ["Programming Languages", "Frameworks & Libraries", "Tools & Software", "Languages"]
     },
     footer: { rights: "All rights reserved." }
   },
@@ -122,12 +126,14 @@ export const t = {
       title: "Mis",
       titleSpan: "Proyectos",
       subtitle: "Descubre mis logros técnicos",
-      allProjects: "Todos los proyectos"
+      allProjects: "Todos los proyectos",
+      viewGithub: "Ver en GitHub"
     },
     skills: {
       title: "Mis",
       titleSpan: "Habilidades",
-      subtitle: "Tecnologías aprendidas en IUT y de forma autodidacta"
+      subtitle: "Tecnologías aprendidas en IUT y de forma autodidacta",
+      categories: ["Lenguajes de Programación", "Frameworks y Librerías", "Herramientas y Software", "Idiomas"]
     },
     footer: { rights: "Todos los derechos reservados." }
   },
@@ -166,12 +172,14 @@ export const t = {
       title: "",
       titleSpan: "مشاريعي",
       subtitle: "اكتشف إنجازاتي التقنية",
-      allProjects: "كل المشاريع"
+      allProjects: "كل المشاريع",
+      viewGithub: "عرض على GitHub"
     },
     skills: {
       title: "",
       titleSpan: "مهاراتي",
-      subtitle: "التقنيات التي تعلمتها"
+      subtitle: "التقنيات التي تعلمتها",
+      categories: ["لغات البرمجة", "أطر العمل والمكتبات", "الأدوات والبرامج", "اللغات"]
     },
     footer: { rights: "جميع الحقوق محفوظة." }
   }
