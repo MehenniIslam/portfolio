@@ -50,7 +50,7 @@ export const Home = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
 
         <div className="text-center md:text-left flex-1">
           <h1 className="text-4xl md:text-6xl font-extrabold mb-6">
-            {content.greeting} <span className="text-violet-500 bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-blue-500">Islam</span>
+            {content.greeting} <span className="text-violet-500 bg-clip-text text-transparent bg-gradient-to-r from-violet-500 to-blue-500">Islam Mehenni Meghraoui</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-700 dark:text-slate-300 leading-relaxed mb-8">
             {content.description}
