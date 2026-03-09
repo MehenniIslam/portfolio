@@ -27,7 +27,7 @@ export const Projects = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
     {
       id: 2,
       title: "Bubble Survivor",
-      description: "Jeu de survie développé en terminal via Python (POO). Lauréat 2ème place à la Coupe NSI de la Marne.",
+      description: "Jeu de survie développé en terminal développé via Python (POO). Lauréat 2ème place à la Coupe NSI de la Marne.",
       image: bubbleImg,
       video: null,
       tags: ["Python", "POO", "Jeu", "Algorithmique"],
@@ -35,6 +35,24 @@ export const Projects = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
     },
     {
       id: 3,
+      title: "PegSolitaire",
+      description: "Jeu de billes classique avec résolution automatique via algorithme en Python.",
+      image: pegsolitaireImg,
+      video: null,
+      tags: ["Python", "Algorithme", "Logique"],
+      link: "https://github.com/MehenniIslam/Pegsolitaire",
+    },
+    {
+      id: 4,
+      title: "Base de Données JO",
+      description: "Conception SQL complète, tables, relations et requêtes complexes avec génération de données CSV.",
+      image: sqlDbImg,
+      video: null,
+      tags: ["SQL", "Conception", "SGBD"],
+      link: "https://github.com/MehenniIslam/SQL_BaseDonne",
+    },
+    {
+      id: 5,
       title: "Machine Virtuelle Linux",
       description: "Configuration complète de A à Z : système, réseau, packages et environnement.",
       image: vmLinuxImg,
