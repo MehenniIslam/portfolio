@@ -7,7 +7,6 @@ import { About } from "./components/About";
 import { Skills } from "./components/Skills";
 import { Projects } from "./components/Projects";
 import NotFound from "./pages/NotFound";
-import logo from "@/assets/logo.png";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -15,6 +14,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
+    // Le chargement dure 2.2 secondes pour laisser l'animation de saut se terminer
     setTimeout(() => setIsLoading(false), 2200);
   }, []);
 
@@ -27,11 +27,24 @@ const App = () => {
   if (isLoading) {
     return (
       <div className="h-screen w-screen flex items-center justify-center bg-slate-950 overflow-hidden">
-        <div className="relative flex flex-col items-center justify-end h-64 w-64">
-          {/* La balle violette qui tombe */}
-          <div className="w-12 h-12 bg-violet-500 rounded-full absolute top-0 animate-ball-smash z-10 shadow-[0_0_20px_rgba(139,92,246,0.6)]"></div>
-          {/* Ton Logo qui se fait écraser */}
-          <img src={logo} alt="Logo" className="w-28 h-auto animate-logo-smash relative z-0 origin-bottom" />
+        {/* Scène de chargement avec balle + "islam" */}
+        <div className="relative flex flex-col items-center justify-end h-64 w-[300px]">
+          {/* La balle violette qui saute */}
+          <div className="w-16 h-16 bg-violet-500 rounded-full absolute top-0 animate-ball-bounce z-10 shadow-[0_0_20px_rgba(139,92,246,0.6)]"></div>
+          
+          {/* Ton nom "islam" dessiné en CSS */}
+          <div className="flex items-baseline text-6xl font-extrabold text-slate-100 relative z-0 origin-bottom scale-[1.3] animate-logo-crush">
+            <span className="relative">
+              {/* Le corps du 'i' qui s'aplatit */}
+              <span className="block animate-i-crush origin-bottom">i</span>
+              {/* Le point du 'i' qui s'écrase */}
+              <span className="w-4 h-4 bg-violet-500 rounded-full absolute top-[-1.5rem] left-1 animate-dot-crush shadow-[0_0_10px_rgba(139,92,246,0.6)]"></span>
+            </span>
+            <span>s</span>
+            <span>l</span>
+            <span>a</span>
+            <span>m</span>
+          </div>
         </div>
       </div>
     );
