@@ -35,7 +35,8 @@ export const t = {
       titleSpan: "Projets",
       subtitle: "Découvrez mes réalisations techniques",
       allProjects: "Tous les projets",
-      viewGithub: "Voir sur GitHub"
+      viewGithub: "Voir sur GitHub",
+      easportDesc: "Application mobile de sport développée en SwiftUI. Projet actuellement en cours de conception et développement."
     },
     skills: {
       title: "Mes",
@@ -81,7 +82,8 @@ export const t = {
       titleSpan: "Projects",
       subtitle: "Discover my technical achievements",
       allProjects: "All projects",
-      viewGithub: "View on GitHub"
+      viewGithub: "View on GitHub",
+      easportDesc: "Sports mobile app developed with SwiftUI. Project currently in design and development phase."
     },
     skills: {
       title: "My",
@@ -127,7 +129,8 @@ export const t = {
       titleSpan: "Proyectos",
       subtitle: "Descubre mis logros técnicos",
       allProjects: "Todos los proyectos",
-      viewGithub: "Ver en GitHub"
+      viewGithub: "Ver en GitHub",
+      easportDesc: "Aplicación móvil de deportes desarrollada en SwiftUI. Proyecto actualmente en fase de diseño y desarrollo."
     },
     skills: {
       title: "Mis",
@@ -173,7 +176,8 @@ export const t = {
       titleSpan: "مشاريعي",
       subtitle: "اكتشف إنجازاتي التقنية",
       allProjects: "كل المشاريع",
-      viewGithub: "عرض على GitHub"
+      viewGithub: "عرض على GitHub",
+      easportDesc: "تطبيق رياضي للهواتف المحمولة تم تطويره باستخدام SwiftUI. المشروع قيد التصميم والتطوير حاليًا."
     },
     skills: {
       title: "",
