@@ -14,8 +14,7 @@ const App = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Le chargement dure 2.2 secondes pour laisser l'animation de saut se terminer
-    setTimeout(() => setIsLoading(false), 2200);
+    setTimeout(() => setIsLoading(false), 2800);
   }, []);
 
   useEffect(() => {
@@ -27,24 +26,18 @@ const App = () => {
   if (isLoading) {
     return (
       <div className="h-screen w-screen flex items-center justify-center bg-slate-950 overflow-hidden">
-        {/* Scène de chargement avec balle + "islam" */}
-        <div className="relative flex flex-col items-center justify-end h-64 w-[300px]">
-          {/* La balle violette qui saute */}
-          <div className="w-16 h-16 bg-violet-500 rounded-full absolute top-0 animate-ball-bounce z-10 shadow-[0_0_20px_rgba(139,92,246,0.6)]"></div>
+        <div className="relative flex flex-col items-center justify-center h-64">
           
-          {/* Ton nom "islam" dessiné en CSS */}
-          <div className="flex items-baseline text-6xl font-extrabold text-slate-100 relative z-0 origin-bottom scale-[1.3] animate-logo-crush">
-            <span className="relative">
-              {/* Le corps du 'i' qui s'aplatit */}
-              <span className="block animate-i-crush origin-bottom">i</span>
-              {/* Le point du 'i' qui s'écrase */}
-              <span className="w-4 h-4 bg-violet-500 rounded-full absolute top-[-1.5rem] left-1 animate-dot-crush shadow-[0_0_10px_rgba(139,92,246,0.6)]"></span>
+          <div className="flex items-baseline text-[8rem] leading-none font-extrabold text-slate-100 relative">
+            <span className="relative flex justify-center">
+              <div className="w-7 h-7 bg-violet-500 rounded-full absolute -top-1 animate-pixar-ball z-10 shadow-[0_0_20px_rgba(139,92,246,0.8)]"></div>
+              
+              <span className="block animate-pixar-i origin-bottom">ı</span>
             </span>
-            <span>s</span>
-            <span>l</span>
-            <span>a</span>
+            <span>m</span>
             <span>m</span>
           </div>
+
         </div>
       </div>
     );
