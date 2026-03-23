@@ -1,10 +1,9 @@
-import { MapPin, Car, Phone, Mail, Gamepad2, Code, Trophy, Target, ExternalLink, Play, Disc } from "lucide-react";
+import { MapPin, Car, Phone, Mail, Gamepad2, Code, Trophy, Target, ExternalLink, Play, Disc, Users } from "lucide-react";
 import { t } from "../components/translations";
 
 export const About = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
   const content = t[lang].about;
 
-  // Icônes pour les hobbies généraux
   const hobbyIcons = [
     <Trophy size={32} className="text-violet-500" />,     // Football
     <Trophy size={32} className="text-blue-500" />,       // Volleyball
@@ -48,79 +47,89 @@ export const About = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
             </a>
           </div>
 
-          {/* PETIT RÉSUMÉ PASSIONS */}
+          {/* RÉSUMÉ HOBBIES RAPIDE */}
           <div className="grid grid-cols-2 gap-4">
             {content.hobbies.map((hobby, index) => (
               <div key={hobby} className="p-4 bg-white/50 dark:bg-slate-900/30 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col items-center text-center group hover:border-violet-500 transition-colors">
                 <div className="mb-2 group-hover:scale-110 transition-transform">{hobbyIcons[index]}</div>
-                <span className="text-xs font-bold uppercase tracking-wider">{hobby}</span>
+                <span className="text-[10px] font-bold uppercase tracking-wider">{hobby}</span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* COLONNE DROITE : DESCRIPTION & GAMING */}
+        {/* COLONNE DROITE : DESCRIPTION, FOOT & GAMING */}
         <div className="lg:col-span-2 space-y-8 animate-fade-in-up">
           
-          {/* DESCRIPTION PRINCIPALE */}
+          {/* BIO SECTION */}
           <div className="bg-white/50 dark:bg-slate-900/30 backdrop-blur-sm p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-sm">
-             <h3 className="text-2xl font-bold mb-4 flex items-center gap-2"><Disc className="text-violet-500 animate-spin-slow" /> Bio</h3>
+             <h3 className="text-2xl font-bold mb-4 flex items-center gap-2"><Disc className="text-violet-500" /> Bio</h3>
              <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed italic">
               "{content.description}"
             </p>
           </div>
 
+          {/* SECTION FOOTBALL - TINQUEUX */}
+          <div className="bg-gradient-to-r from-emerald-600/10 to-blue-600/10 dark:from-emerald-600/20 dark:to-blue-600/20 p-8 rounded-3xl border border-emerald-500/30 shadow-lg relative overflow-hidden group">
+            <div className="absolute top-[-20px] right-[-20px] opacity-10 group-hover:rotate-12 transition-transform duration-700">
+               <Trophy size={150} className="text-emerald-500" />
+            </div>
+            <div className="relative z-10">
+              <div className="flex items-center gap-4 mb-6">
+                <div className="p-3 bg-emerald-500 rounded-2xl text-white shadow-lg shadow-emerald-500/20">
+                  <Users size={28} />
+                </div>
+                <div>
+                  <h3 className="text-2xl font-bold uppercase tracking-tight">Parcours Sportif</h3>
+                  <p className="text-emerald-600 dark:text-emerald-400 font-bold">Joueur au SC Tinqueux</p>
+                </div>
+              </div>
+              <p className="text-slate-700 dark:text-slate-300 leading-relaxed max-w-xl">
+                Passionné de football, j'évolue actuellement au club de **Tinqueux**. Le sport de haut niveau m'a inculqué la **persévérance**, la **rigueur tactique** et l'importance de la **cohésion d'équipe**. Des valeurs que je transpose quotidiennement dans mes projets de développement informatique.
+              </p>
+            </div>
+          </div>
+
           {/* SECTION GAMING DÉTAILLÉE */}
           <div className="bg-slate-900/5 dark:bg-slate-900/80 backdrop-blur-md p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl">
             <div className="flex items-center gap-4 mb-8">
-              <Trophy className="text-yellow-500" size={32} />
-              <h3 className="text-2xl font-bold uppercase tracking-tight">Gaming & Competitive Ranks</h3>
+              <Gamepad2 className="text-rose-500" size={32} />
+              <h3 className="text-2xl font-bold uppercase tracking-tight">Esport & Gaming</h3>
             </div>
 
             <div className="grid sm:grid-cols-2 gap-6 mb-8">
-              {/* VALORANT CARD */}
-              <div className="p-6 rounded-2xl border-2 border-red-500/30 bg-red-500/5 group hover:bg-red-500/10 transition-all">
-                <div className="flex justify-between items-start mb-4">
-                  <h4 className="text-xl font-bold">Valorant</h4>
-                  <span className="px-3 py-1 bg-red-500 text-white text-[10px] font-bold rounded-full uppercase">Main FPS</span>
-                </div>
-                <p className="text-2xl font-black text-slate-900 dark:text-white mb-1 uppercase italic">Diamant 3</p>
+              {/* VALORANT */}
+              <div className="p-6 rounded-2xl border-2 border-red-500/30 bg-red-500/5 hover:bg-red-500/10 transition-all group">
+                <h4 className="text-xl font-bold mb-1">Valorant</h4>
+                <p className="text-2xl font-black text-slate-900 dark:text-white mb-1 italic">DIAMANT 3</p>
                 <p className="text-sm text-slate-500 font-mono mb-4">LiptonPeche#KCW</p>
                 <a href="https://tracker.gg/valorant/profile/riot/LiptonPeche%23KCW/overview" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-red-500 font-bold text-sm hover:underline">
-                  View Tracker <ExternalLink size={14} />
+                  Tracker <ExternalLink size={14} />
                 </a>
               </div>
 
-              {/* LOL CARD */}
-              <div className="p-6 rounded-2xl border-2 border-blue-500/30 bg-blue-500/5 group hover:bg-blue-500/10 transition-all">
-                <div className="flex justify-between items-start mb-4">
-                  <h4 className="text-xl font-bold">League of Legends</h4>
-                </div>
-                <p className="text-2xl font-black text-slate-900 dark:text-white mb-1 uppercase italic">Silver 2</p>
+              {/* LOL */}
+              <div className="p-6 rounded-2xl border-2 border-blue-500/30 bg-blue-500/5 hover:bg-blue-500/10 transition-all group">
+                <h4 className="text-xl font-bold mb-1">League of Legends</h4>
+                <p className="text-2xl font-black text-slate-900 dark:text-white mb-1 italic">SILVER 2</p>
                 <p className="text-sm text-slate-500 font-mono mb-4">LiptonPeche</p>
                 <a href="#" className="inline-flex items-center gap-2 text-blue-500 font-bold text-sm hover:underline">
-                  View OP.GG <ExternalLink size={14} />
+                   OP.GG <ExternalLink size={14} />
                 </a>
               </div>
             </div>
 
-            {/* FPS & MEDAL CLIPS */}
             <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800 flex flex-col md:flex-row items-center gap-6">
               <div className="flex-1">
                 <h4 className="text-lg font-bold text-white mb-2 flex items-center gap-2">
-                  <Target className="text-violet-500" size={20} /> Joueur FPS & FIFA
+                  <Target className="text-violet-500" size={20} /> FPS & Clips
                 </h4>
                 <p className="text-sm text-slate-400 leading-relaxed">
-                  Grand amateur de FPS compétitifs et de FIFA. Le gaming m'a appris la gestion du stress, le travail d'équipe et la persévérance.
+                  Focus sur la précision et l'analyse rapide. Retrouvez mes meilleurs moments sur Medal.
                 </p>
               </div>
-              <a 
-                href="https://medal.tv/u/LiptonPeche" // Remplace par ton lien exact si besoin
-                target="_blank" 
-                rel="noreferrer" 
-                className="flex items-center gap-3 bg-violet-600 hover:bg-violet-500 text-white px-6 py-4 rounded-xl font-bold transition-all shrink-0 shadow-lg shadow-violet-500/20"
-              >
-                <Play size={20} fill="white" /> Voir mes Clips Medal
+              <a href="https://medal.tv/u/LiptonPeche" target="_blank" rel="noreferrer" className="flex items-center gap-3 bg-violet-600 hover:bg-violet-500 text-white px-6 py-4 rounded-xl font-bold transition-all shrink-0">
+                <Play size={20} fill="white" /> Clips Medal
               </a>
             </div>
           </div>
