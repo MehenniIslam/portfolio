@@ -81,11 +81,11 @@ export const About = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
                 </div>
                 <div>
                   <h3 className="text-2xl font-bold uppercase tracking-tight">Parcours Sportif</h3>
-                  <p className="text-emerald-600 dark:text-emerald-400 font-bold">Joueur au SC Tinqueux</p>
+                  <p className="text-emerald-600 dark:text-emerald-400 font-bold">Joueur au FC Tinqueux</p>
                 </div>
               </div>
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed max-w-xl">
-                Passionné de football, j'évolue actuellement au club de **Tinqueux**. Le sport de haut niveau m'a inculqué la **persévérance**, la **rigueur tactique** et l'importance de la **cohésion d'équipe**. Des valeurs que je transpose quotidiennement dans mes projets de développement informatique.
+                Passionné de football, j'évolue actuellement au club de <strong>Tinqueux</strong>. Le sport m'a inculqué la persévérance, la rigueur tactique et l'importance de la <strong>cohésion d'équipe</strong>. Des valeurs que je transpose quotidiennement dans mes projets de développement informatique.
               </p>
             </div>
           </div>
