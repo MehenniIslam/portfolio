@@ -90,50 +90,6 @@ export const About = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
             </div>
           </div>
 
-          {/* SECTION GAMING DÉTAILLÉE */}
-          <div className="bg-slate-900/5 dark:bg-slate-900/80 backdrop-blur-md p-8 rounded-3xl border border-slate-200 dark:border-slate-800 shadow-xl">
-            <div className="flex items-center gap-4 mb-8">
-              <Gamepad2 className="text-rose-500" size={32} />
-              <h3 className="text-2xl font-bold uppercase tracking-tight">Esport & Gaming</h3>
-            </div>
-
-            <div className="grid sm:grid-cols-2 gap-6 mb-8">
-              {/* VALORANT */}
-              <div className="p-6 rounded-2xl border-2 border-red-500/30 bg-red-500/5 hover:bg-red-500/10 transition-all group">
-                <h4 className="text-xl font-bold mb-1">Valorant</h4>
-                <p className="text-2xl font-black text-slate-900 dark:text-white mb-1 italic">DIAMANT 3</p>
-                <p className="text-sm text-slate-500 font-mono mb-4">LiptonPeche#KCW</p>
-                <a href="https://tracker.gg/valorant/profile/riot/LiptonPeche%23KCW/overview" target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 text-red-500 font-bold text-sm hover:underline">
-                  Tracker <ExternalLink size={14} />
-                </a>
-              </div>
-
-              {/* LOL */}
-              <div className="p-6 rounded-2xl border-2 border-blue-500/30 bg-blue-500/5 hover:bg-blue-500/10 transition-all group">
-                <h4 className="text-xl font-bold mb-1">League of Legends</h4>
-                <p className="text-2xl font-black text-slate-900 dark:text-white mb-1 italic">SILVER 2</p>
-                <p className="text-sm text-slate-500 font-mono mb-4">LiptonPeche</p>
-                <a href="#" className="inline-flex items-center gap-2 text-blue-500 font-bold text-sm hover:underline">
-                   OP.GG <ExternalLink size={14} />
-                </a>
-              </div>
-            </div>
-
-            <div className="bg-slate-950 p-6 rounded-2xl border border-slate-800 flex flex-col md:flex-row items-center gap-6">
-              <div className="flex-1">
-                <h4 className="text-lg font-bold text-white mb-2 flex items-center gap-2">
-                  <Target className="text-violet-500" size={20} /> FPS & Clips
-                </h4>
-                <p className="text-sm text-slate-400 leading-relaxed">
-                  Focus sur la précision et l'analyse rapide. Retrouvez mes meilleurs moments sur Medal.
-                </p>
-              </div>
-              <a href="https://medal.tv/u/LiptonPeche" target="_blank" rel="noreferrer" className="flex items-center gap-3 bg-violet-600 hover:bg-violet-500 text-white px-6 py-4 rounded-xl font-bold transition-all shrink-0">
-                <Play size={20} fill="white" /> Clips Medal
-              </a>
-            </div>
-          </div>
-
         </div>
       </div>
     </div>
