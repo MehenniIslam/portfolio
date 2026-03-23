@@ -60,7 +60,7 @@ export const Projects = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
       tags: ["Linux", "Réseau", "Administration"],
       link: "https://github.com/MehenniIslam/VM",
     },
-  ];
+      ];
 
   const nextProject = () => setCurrentIndex((prev) => (prev + 1) % projects.length);
   const prevProject = () => setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);

@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Mail, User, MessageSquare, Send, Download, ArrowRight } from "lucide-react";
+import React, { useState, useEffect } from "react"; // Ajout de useEffect
+import { Mail, User, MessageSquare, Send, Download, ArrowRight, ArrowUp } from "lucide-react"; // Ajout de ArrowUp
 import { Link } from "react-router-dom";
 import emailjs from "emailjs-com";
 import { t } from "./translations"; 
@@ -8,7 +8,25 @@ import photoSansCasque from "@/assets/photo-sans-casque.jpg";
 
 export const Home = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [showScroll, setShowScroll] = useState(false); // État pour le bouton remonter
   const content = t[lang].home;
+
+  // Logique pour afficher/cacher le bouton remonter
+  useEffect(() => {
+    const checkScrollTop = () => {
+      if (!showScroll && window.pageYOffset > 400) {
+        setShowScroll(true);
+      } else if (showScroll && window.pageYOffset <= 400) {
+        setShowScroll(false);
+      }
+    };
+    window.addEventListener("scroll", checkScrollTop);
+    return () => window.removeEventListener("scroll", checkScrollTop);
+  }, [showScroll]);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -16,33 +34,21 @@ export const Home = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
-    emailjs
-      .sendForm(
-        "service_mu9ozq5",   // Ton Service ID
-        "template_v8szh2k",  // Ton Template ID
-        e.currentTarget,
-        "LbbIRCJY3KXuxCAuO"  // Ta clé publique (Public Key)
-      )
-      .then(
-        () => {
-          alert(content.success);
-          setFormData({ name: "", email: "", message: "" });
-        },
-        (error) => {
-          console.error("Erreur EmailJS:", error);
-          alert(content.error);
-        }
-      );
+    emailjs.sendForm("service_mu9ozq5", "template_v8szh2k", e.currentTarget, "LbbIRCJY3KXuxCAuO")
+      .then(() => {
+        alert(content.success);
+        setFormData({ name: "", email: "", message: "" });
+      }, (error) => {
+        console.error("Erreur EmailJS:", error);
+        alert(content.error);
+      });
   };
 
   return (
-    <div className="pt-32 pb-12 px-4 flex flex-col items-center justify-center">
+    <div className="pt-32 pb-12 px-4 flex flex-col items-center justify-center relative">
       
       {/* HEADER / PRESENTATION */}
       <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12 mb-32 animate-fade-in-up">
-        
-        {/* EFFET PHOTO */}
         <div className="flex-shrink-0 relative group w-64 h-64 rounded-3xl overflow-hidden shadow-2xl border-2 border-violet-500/50 cursor-pointer">
           <img src={photoSansCasque} alt="Islam" className="absolute inset-0 w-full h-full object-cover" />
           <img src={photoAvecCasque} alt="Islam Casque" className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500 group-hover:opacity-0" />
@@ -102,7 +108,7 @@ export const Home = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
       </div>
 
       {/* CONTACT */}
-      <div id="contact" className="w-full max-w-lg bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-8 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800">
+      <div id="contact" className="w-full max-w-lg bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl p-8 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 mb-20">
         <h2 className="text-2xl font-bold text-center mb-8 text-slate-900 dark:text-white">{content.contactTitle}</h2>
         <form onSubmit={handleSubmit} className="space-y-5">
           <div className="relative">
@@ -122,6 +128,26 @@ export const Home = ({ lang }: { lang: "FR" | "EN" | "ES" | "AR" }) => {
           </button>
         </form>
       </div>
+
+      {/* FOOTER & MENTIONS LÉGALES */}
+      <footer className="w-full text-center py-8 border-t border-slate-200 dark:border-slate-800">
+        <p className="text-slate-500 text-sm">
+          © {new Date().getFullYear()} Islam Mehenni Meghraoui. 
+          <Link to="/mentions-legales" className="ml-4 hover:text-violet-500 underline decoration-violet-500/30">
+            Mentions Légales
+          </Link>
+        </p>
+      </footer>
+
+      {/* BOUTON REMONTER */}
+      <button
+        onClick={scrollToTop}
+        className={`fixed bottom-8 right-8 p-4 bg-violet-600 text-white rounded-full shadow-2xl transition-all duration-300 z-50 hover:bg-violet-500 hover:-translate-y-1 ${showScroll ? 'opacity-100 scale-100' : 'opacity-0 scale-0 pointer-events-none'}`}
+        aria-label="Remonter en haut"
+      >
+        <ArrowUp size={24} />
+      </button>
+
     </div>
   );
 };
