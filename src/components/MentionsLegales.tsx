@@ -15,12 +15,12 @@ export const MentionsLegales = ({ lang }: { lang: string }) => {
         <section>
           <h2 className="text-2xl font-semibold mb-4 text-violet-500">1. Édition du site</h2>
           <p>Ce site est le portfolio personnel de <strong>Islam Mehenni Meghraoui</strong>.</p>
-          <p>Contact : [Ton adresse email ou via le formulaire]</p>
+          <p>Contact : islam.mehenni-meghraoui@etudiant.univ-reims.fr</p>
         </section>
 
         <section>
           <h2 className="text-2xl font-semibold mb-4 text-violet-500">2. Hébergement</h2>
-          <p>Ce site est hébergé par <strong>Vercel Inc.</strong> (ou Netlify / Hostinger selon ton cas).</p>
+          <p>Ce site est hébergé par <strong>Vercel Inc.</strong>.</p>
         </section>
 
         <section>
